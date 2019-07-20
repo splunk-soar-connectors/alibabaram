@@ -110,6 +110,56 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.parameter.limit",
+                    "data_type": "numeric",
+                    "example_values": [
+                        100
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Comments",
+                    "data_type": "string",
+                    "example_values": [
+                        "Test Comment"
+                    ],
+                    "column_name": "Comments",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.CreateDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-19T04:28:48Z"
+                    ],
+                    "column_name": "Created Date",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.DisplayName",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.UpdateDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-19T04:28:48Z"
+                    ],
+                    "column_name": "Updated Date",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.UserId",
+                    "data_type": "string",
+                    "example_values": [
+                        "291581163510528087"
+                    ],
+                    "column_name": "User ID",
+                    "column_order": 0
+                },
+                {
                     "data_path": "action_result.data.*.UserName",
                     "data_type": "string",
                     "example_values": [
@@ -122,67 +172,17 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.DisplayName",
-                    "data_type": "string",
+                    "data_path": "action_result.summary.total_users",
+                    "data_type": "numeric",
                     "example_values": [
-                        "test1"
+                        3
                     ]
-                },
-                {
-                    "data_path": "action_result.data.*.CreateDate",
-                    "data_type": "string",
-                    "example_values": [
-                        "2019-07-19T04:28:48Z"
-                    ],
-                    "column_name": "Created Date",
-                    "column_order": 2
-                },
-                {
-                    "data_path": "action_result.data.*.UserId",
-                    "data_type": "string",
-                    "example_values": [
-                        "291581163510528087"
-                    ],
-                    "column_name": "User ID",
-                    "column_order": 0
-                },
-                {
-                    "data_path": "action_result.data.*.Comments",
-                    "data_type": "string",
-                    "example_values": [
-                        "Test Comment"
-                    ],
-                    "column_name": "Comments",
-                    "column_order": 4
-                },
-                {
-                    "data_path": "action_result.data.*.UpdateDate",
-                    "data_type": "string",
-                    "example_values": [
-                        "2019-07-19T04:28:48Z"
-                    ],
-                    "column_name": "Updated Date",
-                    "column_order": 3
                 },
                 {
                     "data_path": "action_result.message",
                     "data_type": "string",
                     "example_values": [
                         "Total users: 3"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.limit",
-                    "data_type": "numeric",
-                    "example_values": [
-                        100
-                    ]
-                },
-                {
-                    "data_path": "action_result.summary.total_users",
-                    "data_type": "numeric",
-                    "example_values": [
-                        3
                     ]
                 },
                 {
@@ -229,13 +229,20 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.RoleId",
+                    "data_path": "action_result.parameter.limit",
+                    "data_type": "numeric",
+                    "example_values": [
+                        100
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Arn",
                     "data_type": "string",
                     "example_values": [
-                        "386284258992406563"
+                        "acs:ram::5211362082633686:role/test"
                     ],
-                    "column_name": "Role ID",
-                    "column_order": 0
+                    "column_name": "ARN",
+                    "column_order": 4
                 },
                 {
                     "data_path": "action_result.data.*.CreateDate",
@@ -256,13 +263,13 @@
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.Arn",
+                    "data_path": "action_result.data.*.RoleId",
                     "data_type": "string",
                     "example_values": [
-                        "acs:ram::5211362082633686:role/test"
+                        "386284258992406563"
                     ],
-                    "column_name": "ARN",
-                    "column_order": 4
+                    "column_name": "Role ID",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data.*.RoleName",
@@ -274,24 +281,17 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.message",
-                    "data_type": "string",
-                    "example_values": [
-                        "Total roles: 2"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.limit",
-                    "data_type": "numeric",
-                    "example_values": [
-                        100
-                    ]
-                },
-                {
                     "data_path": "action_result.summary.total_roles",
                     "data_type": "numeric",
                     "example_values": [
                         2
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Total roles: 2"
                     ]
                 },
                 {
@@ -338,31 +338,8 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.GroupName",
-                    "data_type": "string",
-                    "example_values": [
-                        "alibaba-test-group"
-                    ],
-                    "column_name": "Group Name",
-                    "column_order": 0
-                },
-                {
-                    "data_path": "action_result.data.*.CreateDate",
-                    "data_type": "string",
-                    "example_values": [
-                        "2019-07-02T20:39:17Z"
-                    ],
-                    "column_name": "Created Date",
-                    "column_order": 1
-                },
-                {
-                    "data_path": "action_result.data.*.UpdateDate",
-                    "data_type": "string",
-                    "example_values": [
-                        "2019-07-02T20:39:17Z"
-                    ],
-                    "column_name": "Updated Date",
-                    "column_order": 2
+                    "data_path": "action_result.parameter.limit",
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.data.*.Comments",
@@ -374,6 +351,40 @@
                     "column_order": 3
                 },
                 {
+                    "data_path": "action_result.data.*.CreateDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-02T20:39:17Z"
+                    ],
+                    "column_name": "Created Date",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.GroupName",
+                    "data_type": "string",
+                    "example_values": [
+                        "alibaba-test-group"
+                    ],
+                    "column_name": "Group Name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.UpdateDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-02T20:39:17Z"
+                    ],
+                    "column_name": "Updated Date",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.summary.total_groups",
+                    "data_type": "numeric",
+                    "example_values": [
+                        3
+                    ]
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string",
                     "example_values": [
@@ -381,10 +392,548 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.summary.total_groups",
+                    "data_path": "summary.total_objects",
                     "data_type": "numeric",
                     "example_values": [
-                        3
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "add user",
+            "identifier": "add_user",
+            "undo": "remove user",
+            "description": "Add a user to the provided group",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "user_name": {
+                    "description": "Username of the user",
+                    "data_type": "string",
+                    "required": true,
+                    "order": 0
+                },
+                "group_name": {
+                    "description": "Name of the group",
+                    "data_type": "string",
+                    "required": true,
+                    "order": 1
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.group_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.user_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "User: test1 is successfully added to the group: test1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "remove user",
+            "identifier": "remove_user",
+            "undo": "add user",
+            "description": "Remove a user from the provided group",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "user_name": {
+                    "description": "Username of the user",
+                    "data_type": "string",
+                    "required": true,
+                    "order": 0
+                },
+                "group_name": {
+                    "description": "Name of the group",
+                    "data_type": "string",
+                    "required": true,
+                    "order": 1
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.group_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.user_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "User: test1 is successfully removed from the group: test1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "attach policy",
+            "identifier": "attach_policy",
+            "undo": "detach policy",
+            "description": "Attach a policy to the provided user, group or role",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "policy_name": {
+                    "description": "Name of the policy",
+                    "data_type": "string",
+                    "required": true,
+                    "order": 0
+                },
+                "policy_type": {
+                    "description": "Type of the policy",
+                    "data_type": "string",
+                    "required": true,
+                    "value_list": [
+                        "System",
+                        "Custom"
+                    ],
+                    "order": 1
+                },
+                "user_name": {
+                    "description": "Username of the user",
+                    "data_type": "string",
+                    "required": false,
+                    "order": 2
+                },
+                "group_name": {
+                    "description": "Name of the group",
+                    "data_type": "string",
+                    "required": false,
+                    "order": 3
+                },
+                "role_name": {
+                    "description": "Name of the role",
+                    "data_type": "string",
+                    "required": false,
+                    "order": 4
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.group_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.policy_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "AliyunMTSFullAccess"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.policy_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "System"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.role_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.user_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Policy: AliyunMTSFullAccess is successfully attached to the user: test1, group: test1, and role: test"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "detach policy",
+            "identifier": "detach_policy",
+            "undo": "attach policy",
+            "description": "Detach a policy from the provided user or group or role",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "policy_name": {
+                    "description": "Name of the policy",
+                    "data_type": "string",
+                    "required": true,
+                    "order": 0
+                },
+                "policy_type": {
+                    "description": "Type of the policy",
+                    "data_type": "string",
+                    "required": true,
+                    "value_list": [
+                        "System",
+                        "Custom"
+                    ],
+                    "order": 1
+                },
+                "user_name": {
+                    "description": "Username of the user",
+                    "data_type": "string",
+                    "required": false,
+                    "order": 2
+                },
+                "group_name": {
+                    "description": "Name of the group",
+                    "data_type": "string",
+                    "required": false,
+                    "order": 3
+                },
+                "role_name": {
+                    "description": "Name of the role",
+                    "data_type": "string",
+                    "required": false,
+                    "order": 4
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.group_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.policy_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "AliyunMTSFullAccess"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.policy_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "System"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.role_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.user_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Policy: AliyunMTSFullAccess is successfully detached from the user: test1, group: test1, and role: test"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "describe user",
+            "identifier": "describe_user",
+            "description": "Fetch the user details and the details of the asociated user groups",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "user_name": {
+                    "description": "Username of the user",
+                    "data_type": "string",
+                    "required": true,
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.user_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Comments",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.CreateDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-19T04:28:48Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.DisplayName",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Email",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.LastLoginDate",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.MobilePhone",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.UpdateDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-19T04:28:48Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.UserId",
+                    "data_type": "string",
+                    "example_values": [
+                        "291581163510528087"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.UserName",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ],
+                    "contains": [
+                        "user name"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.user_groups.*.Comments",
+                    "data_type": "string",
+                    "example_values": [
+                        "This group created for testing purpose."
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.user_groups.*.GroupName",
+                    "data_type": "string",
+                    "example_values": [
+                        "test_deep"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.user_groups.*.JoinDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-19T04:29:13Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully fetched the details of the user: test1"
                     ]
                 },
                 {
@@ -431,27 +980,10 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.users.*.UserName",
+                    "data_path": "action_result.parameter.group_name",
                     "data_type": "string",
                     "example_values": [
-                        "test_d"
-                    ],
-                    "contains": [
-                        "user name"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.users.*.JoinDate",
-                    "data_type": "string",
-                    "example_values": [
-                        "2019-07-19T04:29:03Z"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.users.*.DisplayName",
-                    "data_type": "string",
-                    "example_values": [
-                        "test_d"
+                        "test1"
                     ]
                 },
                 {
@@ -469,13 +1001,6 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.policies.*.PolicyType",
-                    "data_type": "string",
-                    "example_values": [
-                        "System"
-                    ]
-                },
-                {
                     "data_path": "action_result.data.*.policies.*.Description",
                     "data_type": "string",
                     "example_values": [
@@ -490,17 +1015,34 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.message",
+                    "data_path": "action_result.data.*.policies.*.PolicyType",
                     "data_type": "string",
                     "example_values": [
-                        "Total policies: 2, Total users: 2"
+                        "System"
                     ]
                 },
                 {
-                    "data_path": "action_result.parameter.group_name",
+                    "data_path": "action_result.data.*.users.*.DisplayName",
                     "data_type": "string",
                     "example_values": [
-                        "test1"
+                        "test_d"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.users.*.JoinDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-19T04:29:03Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.users.*.UserName",
+                    "data_type": "string",
+                    "example_values": [
+                        "test_d"
+                    ],
+                    "contains": [
+                        "user name"
                     ]
                 },
                 {
@@ -515,6 +1057,13 @@
                     "data_type": "numeric",
                     "example_values": [
                         2
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Total policies: 2, Total users: 2"
                     ]
                 },
                 {
@@ -538,7 +1087,6 @@
                 "height": 10,
                 "title": "Group Info",
                 "view": "alibabaram_view.display_view"
-
             },
             "versions": "EQ(*)"
         },
@@ -577,135 +1125,6 @@
                     ],
                     "column_name": "username",
                     "column_order": 0
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
-                },
-                {
-                    "data_path": "action_result.summary",
-                    "data_type": "string"
-                },
-                {
-                    "data_path": "action_result.message",
-                    "data_type": "string"
-                },
-                {
-                    "data_path": "summary.total_objects",
-                    "data_type": "numeric"
-                },
-                {
-                    "data_path": "summary.total_objects_successful",
-                    "data_type": "numeric"
-                }
-            ],
-            "render": {
-                "type": "table"
-            },
-            "versions": "EQ(*)"
-        },
-        {
-            "action": "attach policy",
-            "identifier": "attach_policy",
-            "description": "Attaches a policy to a RAM User, Group or Role",
-            "type": "generic",
-            "read_only": false,
-            "parameters": {
-                "group_name": {
-                    "description": "RAM group name",
-                    "data_type": "string",
-                    "required": false,
-                    "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
-                    "order": 0
-                },
-                "role_name": {
-                    "description": "RAM role name",
-                    "data_type": "string",
-                    "required": false,
-                    "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
-                    "order": 1
-                },
-                "username": {
-                    "description": "RAM username",
-                    "data_type": "string",
-                    "required": false,
-                    "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
-                    "order": 2
-                },
-                "policy_name": {
-                    "description": "RAM policy name",
-                    "data_type": "string",
-                    "required": true,
-                    "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
-                    "order": 3
-                },
-                "policy_type": {
-                    "description": "RAM policy type",
-                    "data_type": "string",
-                    "required": true,
-                    "primary": false,
-                    "contains": [],
-                    "value_list": [
-                        "System",
-                        "Custom"
-                    ],
-                    "default": "",
-                    "order": 4
-                }
-            },
-            "output": [
-                {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 5
-                },
-                {
-                    "data_path": "action_result.parameter.group_name",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "group_name",
-                    "column_order": 0
-                },
-                {
-                    "data_path": "action_result.parameter.policy_name",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "policy_name",
-                    "column_order": 3
-                },
-                {
-                    "data_path": "action_result.parameter.policy_type",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "policy_type",
-                    "column_order": 4
-                },
-                {
-                    "data_path": "action_result.parameter.role_name",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "role_name",
-                    "column_order": 1
-                },
-                {
-                    "data_path": "action_result.parameter.username",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "username",
-                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.data",

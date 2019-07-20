@@ -13,10 +13,19 @@ ALIBABARAM_JSON_SECRET_KEY = "secret_key"
 ALIBABARAM_JSON_REGION_ID = "region_id"
 ALIBABARAM_JSON_LIMIT = "limit"
 ALIBABARAM_JSON_USERS = "Users"
+ALIBABARAM_JSON_USER = "User"
 ALIBABARAM_JSON_ROLES = "Roles"
 ALIBABARAM_JSON_GROUPS = "Groups"
 ALIBABARAM_JSON_POLICIES = "Policies"
+ALIBABARAM_JSON_USER_NAME = "user_name"
 ALIBABARAM_JSON_GROUP_NAME = "group_name"
+ALIBABARAM_JSON_ROLE_NAME = "role_name"
+ALIBABARAM_JSON_POLICY_NAME = "policy_name"
+ALIBABARAM_JSON_POLICY_TYPE = "policy_type"
+ALIBABARAM_JSON_USER_GROUPS = "user_groups"
+ALIBABARAM_PROCESS_ATTACHING = "attaching"
+ALIBABARAM_PROCESS_DETACHING = "detaching"
+ALIBABARAM_REQUEST_ID = "RequestId"
 ALIBABARAM_DEFAULT_REGION = "cn-hangzhou"
 ALIBABARAM_REGIONS_MAPPING = {
         "Asia Pacific NE 1": "ap-northeast-1",
@@ -48,3 +57,6 @@ ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING = {
 }
 ALIBABARAM_INVALID_INTEGER = 'Please provide non-zero positive integer in {parameter}'
 ALIBABARAM_ERROR_CREATING_REQUEST = 'Error occurred while creating request for fetching the {item_name} associated with the given RAM group. Error: {error}'
+ALIBABARAM_ERROR_ATTACH_DETACH_POLICY = 'Error occurred while {pr} policy: {pol} to the {itn}: {it}. Error: {err}'
+ALIBABARAM_ATTACH_POLICY_MSG = "Policy: {pol} is successfully attached to the user: {user}, group: {grp}, and role: {role}"
+ALIBABARAM_DETACH_POLICY_MSG = "Policy: {pol} is successfully detached from the user: {user}, group: {grp}, and role: {role}"

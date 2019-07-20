@@ -19,6 +19,16 @@ from aliyunsdkram.request.v20150501.ListRolesRequest import ListRolesRequest
 from aliyunsdkram.request.v20150501.ListGroupsRequest import ListGroupsRequest
 from aliyunsdkram.request.v20150501.ListUsersForGroupRequest import ListUsersForGroupRequest
 from aliyunsdkram.request.v20150501.ListPoliciesForGroupRequest import ListPoliciesForGroupRequest
+from aliyunsdkram.request.v20150501.AddUserToGroupRequest import AddUserToGroupRequest
+from aliyunsdkram.request.v20150501.RemoveUserFromGroupRequest import RemoveUserFromGroupRequest
+from aliyunsdkram.request.v20150501.AttachPolicyToGroupRequest import AttachPolicyToGroupRequest
+from aliyunsdkram.request.v20150501.AttachPolicyToRoleRequest import AttachPolicyToRoleRequest
+from aliyunsdkram.request.v20150501.AttachPolicyToUserRequest import AttachPolicyToUserRequest
+from aliyunsdkram.request.v20150501.DetachPolicyFromUserRequest import DetachPolicyFromUserRequest
+from aliyunsdkram.request.v20150501.DetachPolicyFromGroupRequest import DetachPolicyFromGroupRequest
+from aliyunsdkram.request.v20150501.DetachPolicyFromRoleRequest import DetachPolicyFromRoleRequest
+from aliyunsdkram.request.v20150501.GetUserRequest import GetUserRequest
+from aliyunsdkram.request.v20150501.ListGroupsForUserRequest import ListGroupsForUserRequest
 
 
 class RetVal(tuple):
@@ -148,7 +158,7 @@ class AlibabaRamConnector(BaseConnector):
         next_token = None
 
         if set_max_items:
-            ram_request.set_MaxItems("1")
+            ram_request.set_MaxItems("100")
 
         while True:
             try:
@@ -164,7 +174,7 @@ class AlibabaRamConnector(BaseConnector):
             try:
                 resp_json = json.loads(response)
             except Exception as e:
-                return action_result.set_status(phantom.APP_ERROR, 'Error occurred while parsing the response JSON. Error: {1}'.format(item_name, str(e)))
+                return action_result.set_status(phantom.APP_ERROR, 'Error occurred while parsing the response JSON. Error: {0}'.format(str(e)))
 
             if resp_json and resp_json.get(item_name) and resp_json.get(item_name).get(ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING.get(item_name)):
                 list_items.extend(resp_json.get(item_name).get(ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING.get(item_name)))
@@ -286,6 +296,161 @@ class AlibabaRamConnector(BaseConnector):
 
         return action_result.set_status(phantom.APP_SUCCESS)
 
+    def _handle_add_user(self, param):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+
+        action_result = self.add_action_result(ActionResult(dict(param)))
+        user_name = param.get(ALIBABARAM_JSON_USER_NAME)
+        group_name = param.get(ALIBABARAM_JSON_GROUP_NAME)
+
+        try:
+            ram_request = AddUserToGroupRequest()
+            ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
+            ram_request.set_UserName(user_name)
+            ram_request.set_GroupName(group_name)
+            response = self._client.do_action_with_exception(ram_request)
+        except Exception as e:
+            return action_result.set_status(phantom.APP_ERROR, "Error occurred while adding user: {0} to the group: {1}. Error: {2}".format(user_name, group_name, str(e)))
+
+        if not response:
+            return action_result.set_status(phantom.APP_ERROR, "Unknown error occurred while adding user: {0} to the group: {1}".format(user_name, group_name))
+
+        return action_result.set_status(phantom.APP_SUCCESS, "User: {0} is successfully added to the group: {1}".format(user_name, group_name))
+
+    def _handle_remove_user(self, param):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+
+        action_result = self.add_action_result(ActionResult(dict(param)))
+        user_name = param.get(ALIBABARAM_JSON_USER_NAME)
+        group_name = param.get(ALIBABARAM_JSON_GROUP_NAME)
+
+        try:
+            ram_request = RemoveUserFromGroupRequest()
+            ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
+            ram_request.set_UserName(user_name)
+            ram_request.set_GroupName(group_name)
+            response = self._client.do_action_with_exception(ram_request)
+        except Exception as e:
+            return action_result.set_status(phantom.APP_ERROR, "Error occurred while removing user: {0} from the group: {1}. Error: {2}".format(user_name, group_name, str(e)))
+
+        if not response:
+            return action_result.set_status(phantom.APP_ERROR, "Unknown error occurred while removing user: {0} from the group: {1}".format(user_name, group_name))
+
+        return action_result.set_status(phantom.APP_SUCCESS, "User: {0} is successfully removed from the group: {1}".format(user_name, group_name))
+
+    def _attach_detach_policy(self, policy_name, policy_type, item, item_name, action_result, is_attach=True):
+        try:
+            ram_request = None
+            if not is_attach:
+                process_name = ALIBABARAM_PROCESS_DETACHING
+            else:
+                process_name = ALIBABARAM_PROCESS_ATTACHING
+
+            if ALIBABARAM_JSON_USER_NAME == item_name:
+                if not is_attach:
+                    ram_request = DetachPolicyFromUserRequest()
+                else:
+                    ram_request = AttachPolicyToUserRequest()
+
+                ram_request.set_UserName(item)
+            elif ALIBABARAM_JSON_GROUP_NAME == item_name:
+                if not is_attach:
+                    ram_request = DetachPolicyFromGroupRequest()
+                else:
+                    ram_request = AttachPolicyToGroupRequest()
+
+                ram_request.set_GroupName(item)
+            else:
+                if not is_attach:
+                    ram_request = DetachPolicyFromRoleRequest()
+                else:
+                    ram_request = AttachPolicyToRoleRequest()
+
+                ram_request.set_RoleName(item)
+
+            ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
+            ram_request.set_PolicyName(policy_name)
+            ram_request.set_PolicyType(policy_type)
+
+            response = self._client.do_action_with_exception(ram_request)
+        except Exception as e:
+            action_result.set_status(phantom.APP_ERROR, ALIBABARAM_ERROR_ATTACH_DETACH_POLICY.format(pr=process_name, pol=policy_name, itn=item_name, it=item, err=str(e)))
+            return None
+
+        return response
+
+    def _handle_attach_policy(self, param):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+
+        action_result = self.add_action_result(ActionResult(dict(param)))
+
+        user_name = param.get(ALIBABARAM_JSON_USER_NAME)
+        group_name = param.get(ALIBABARAM_JSON_GROUP_NAME)
+        role_name = param.get(ALIBABARAM_JSON_ROLE_NAME)
+        policy_name = param.get(ALIBABARAM_JSON_POLICY_NAME)
+        policy_type = param.get(ALIBABARAM_JSON_POLICY_TYPE)
+
+        if not (user_name and group_name and role_name):
+            return action_result.set_status(phantom.APP_ERROR, 'Please provide at least one of the user_name, group_name, or role_name parameters')
+
+        if user_name:
+            result = self._attach_detach_policy(policy_name, policy_type, user_name, ALIBABARAM_JSON_USER_NAME, action_result)
+
+            if not result:
+                return action_result.get_status()
+
+        if group_name:
+            result = self._attach_detach_policy(policy_name, policy_type, group_name, ALIBABARAM_JSON_GROUP_NAME, action_result)
+
+            if not result:
+                return action_result.get_status()
+
+        if role_name:
+            result = self._attach_detach_policy(policy_name, policy_type, role_name, ALIBABARAM_JSON_ROLE_NAME, action_result)
+
+            if not result:
+                return action_result.get_status()
+
+        return action_result.set_status(phantom.APP_SUCCESS, ALIBABARAM_ATTACH_POLICY_MSG.format(pol=policy_name, user=user_name, grp=group_name, role=role_name))
+
+    def _handle_detach_policy(self, param):
+
+        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+
+        action_result = self.add_action_result(ActionResult(dict(param)))
+
+        user_name = param.get(ALIBABARAM_JSON_USER_NAME)
+        group_name = param.get(ALIBABARAM_JSON_GROUP_NAME)
+        role_name = param.get(ALIBABARAM_JSON_ROLE_NAME)
+        policy_name = param.get(ALIBABARAM_JSON_POLICY_NAME)
+        policy_type = param.get(ALIBABARAM_JSON_POLICY_TYPE)
+
+        if not (user_name and group_name and role_name):
+            return action_result.set_status(phantom.APP_ERROR, 'Please provide at least one of the user_name, group_name, or role_name parameters')
+
+        if user_name:
+            result = self._attach_detach_policy(policy_name, policy_type, user_name, ALIBABARAM_JSON_USER_NAME, action_result, False)
+
+            if not result:
+                return action_result.get_status()
+
+        if group_name:
+            result = self._attach_detach_policy(policy_name, policy_type, group_name, ALIBABARAM_JSON_GROUP_NAME, action_result, False)
+
+            if not result:
+                return action_result.get_status()
+
+        if role_name:
+            result = self._attach_detach_policy(policy_name, policy_type, role_name, ALIBABARAM_JSON_ROLE_NAME, action_result, False)
+
+            if not result:
+                return action_result.get_status()
+
+        return action_result.set_status(phantom.APP_SUCCESS, ALIBABARAM_DETACH_POLICY_MSG.format(pol=policy_name, user=user_name, grp=group_name, role=role_name))
+
     def _handle_describe_group(self, param):
 
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
@@ -332,19 +497,58 @@ class AlibabaRamConnector(BaseConnector):
 
         return action_result.set_status(phantom.APP_SUCCESS)
 
-    def _handle_list_user_groups(self, param):
+    def _handle_describe_user(self, param):
 
-        # Implement the handler here
-        # use self.save_progress(...) to send progress messages back to the platform
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
 
-        # Add an action result object to self (BaseConnector) to represent the action for this param
         action_result = self.add_action_result(ActionResult(dict(param)))
+        user_name = param[ALIBABARAM_JSON_USER_NAME]
+        user_details = dict()
 
-        # For now return Error with a message, in case of success we don't set the message, but use the summary
-        return action_result.set_status(phantom.APP_ERROR, "Action not yet implemented")
+        # 1. Fetch the general details for the given user
+        try:
+            ram_request = GetUserRequest()
+            ram_request.set_UserName(user_name)
+            ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
+            response = self._client.do_action_with_exception(ram_request)
+        except Exception as e:
+            return action_result.set_status(phantom.APP_ERROR, "Error occurred while creating request for fetching details of the user: {0}. Error: {1}".format(user_name, str(e)))
 
-    def _handle_attach_policy(self, param):
+        try:
+            resp_json = json.loads(response)
+        except Exception as e:
+            return action_result.set_status(phantom.APP_ERROR, 'Error occurred while parsing the response JSON. Error: {0}'.format(str(e)))
+
+        if resp_json and resp_json.get(ALIBABARAM_JSON_USER):
+            user_details.update(resp_json.get(ALIBABARAM_JSON_USER))
+        else:
+            return action_result.set_status(phantom.APP_ERROR, "Unknown error occurred while fetching the general details of the user: {0}".format(user_name))
+
+        # 2. Fetch the groups details for the given user
+        # This API call of the SDM does not support the pagination
+        try:
+            ram_request = ListGroupsForUserRequest()
+            ram_request.set_UserName(user_name)
+            ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
+            response = self._client.do_action_with_exception(ram_request)
+        except Exception as e:
+            return action_result.set_status(phantom.APP_ERROR, "Error occurred while creating request for fetching groups of the user: {0}. Error: {1}".format(user_name, str(e)))
+
+        try:
+            resp_json = json.loads(response)
+        except Exception as e:
+            return action_result.set_status(phantom.APP_ERROR, 'Error occurred while parsing the response JSON. Error: {0}'.format(str(e)))
+
+        if resp_json and resp_json.get(ALIBABARAM_JSON_GROUPS) and resp_json.get(ALIBABARAM_JSON_GROUPS).get(ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING.get(ALIBABARAM_JSON_GROUPS)):
+            user_details.update({ALIBABARAM_JSON_USER_GROUPS: resp_json.get(ALIBABARAM_JSON_GROUPS).get(ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING.get(ALIBABARAM_JSON_GROUPS))})
+        else:
+            user_details.update({ALIBABARAM_JSON_USER_GROUPS: []})
+
+        action_result.add_data(user_details)
+
+        return action_result.set_status(phantom.APP_SUCCESS, "Successfully fetched the details of the user: {0}".format(user_name))
+
+    def _handle_list_user_groups(self, param):
 
         # Implement the handler here
         # use self.save_progress(...) to send progress messages back to the platform
@@ -382,9 +586,13 @@ class AlibabaRamConnector(BaseConnector):
             'list_users': self._handle_list_users,
             'list_roles': self._handle_list_roles,
             'list_groups': self._handle_list_groups,
+            'add_user': self._handle_add_user,
+            'remove_user': self._handle_remove_user,
+            'describe_user': self._handle_describe_user,
             'describe_group': self._handle_describe_group,
             'list_user_groups': self._handle_list_user_groups,
             'attach_policy': self._handle_attach_policy,
+            'detach_policy': self._handle_detach_policy,
             'update_user': self._handle_update_user
         }
 
