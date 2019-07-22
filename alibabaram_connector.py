@@ -334,7 +334,7 @@ class AlibabaRamConnector(BaseConnector):
         policy_name = param.get(ALIBABARAM_JSON_POLICY_NAME)
         policy_type = param.get(ALIBABARAM_JSON_POLICY_TYPE)
 
-        if not (user_name and group_name and role_name):
+        if not (user_name or group_name or role_name):
             return action_result.set_status(phantom.APP_ERROR, 'Please provide at least one of the user_name, group_name, or role_name parameters')
 
         if user_name:
@@ -369,7 +369,7 @@ class AlibabaRamConnector(BaseConnector):
         policy_name = param.get(ALIBABARAM_JSON_POLICY_NAME)
         policy_type = param.get(ALIBABARAM_JSON_POLICY_TYPE)
 
-        if not (user_name and group_name and role_name):
+        if not (user_name or group_name or role_name):
             return action_result.set_status(phantom.APP_ERROR, 'Please provide at least one of the user_name, group_name, or role_name parameters')
 
         if user_name:
@@ -458,7 +458,7 @@ class AlibabaRamConnector(BaseConnector):
 
         policy_type = param.get(ALIBABARAM_JSON_POLICY_TYPE)
 
-        if not (user_name and group_name):
+        if not (user_name or group_name):
             return action_result.set_status(phantom.APP_ERROR, 'Please provide at least one of the user_name or group_name parameters')
 
         valid_policy_types = self._validate_policy_types(policies_list, policy_type, action_result)

@@ -123,7 +123,7 @@
                         "Test Comment"
                     ],
                     "column_name": "Comments",
-                    "column_order": 4
+                    "column_order": 5
                 },
                 {
                     "data_path": "action_result.data.*.CreateDate",
@@ -132,14 +132,16 @@
                         "2019-07-19T04:28:48Z"
                     ],
                     "column_name": "Created Date",
-                    "column_order": 2
+                    "column_order": 3
                 },
                 {
                     "data_path": "action_result.data.*.DisplayName",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "Display Name",
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.data.*.UpdateDate",
@@ -148,7 +150,7 @@
                         "2019-07-19T04:28:48Z"
                     ],
                     "column_name": "Updated Date",
-                    "column_order": 3
+                    "column_order": 4
                 },
                 {
                     "data_path": "action_result.data.*.UserId",
@@ -430,7 +432,8 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
@@ -452,7 +455,9 @@
                     "data_type": "string",
                     "example_values": [
                         "2015-04-28T16:15:44Z"
-                    ]
+                    ],
+                    "column_name": "Create Date",
+                    "column_order": 3
                 },
                 {
                     "data_path": "action_result.data.*.DefaultVersion",
@@ -466,28 +471,36 @@
                     "data_type": "string",
                     "example_values": [
                         "\u7ba1\u7406\u6240\u6709\u963f\u91cc\u4e91\u8d44\u6e90\u7684\u6743\u9650"
-                    ]
+                    ],
+                    "column_name": "Description",
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.data.*.PolicyName",
                     "data_type": "string",
                     "example_values": [
                         "AdministratorAccess"
-                    ]
+                    ],
+                    "column_name": "Policy Name",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data.*.PolicyType",
                     "data_type": "string",
                     "example_values": [
                         "System"
-                    ]
+                    ],
+                    "column_name": "Policy Type",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.data.*.UpdateDate",
                     "data_type": "string",
                     "example_values": [
                         "2017-04-27T16:48:07Z"
-                    ]
+                    ],
+                    "column_name": "Update Date",
+                    "column_order": 4
                 },
                 {
                     "data_path": "action_result.summary.total_policies",
@@ -551,21 +564,27 @@
                     "example_values": [
                         "success",
                         "failed"
-                    ]
+                    ],
+                    "column_name": "Status",
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.group_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "Group Name",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.user_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "User Name",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data",
@@ -630,21 +649,27 @@
                     "example_values": [
                         "success",
                         "failed"
-                    ]
+                    ],
+                    "column_name": "Status",
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.group_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "Group Name",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.user_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "User Name",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data",
@@ -731,42 +756,54 @@
                     "example_values": [
                         "success",
                         "failed"
-                    ]
+                    ],
+                    "column_name": "Status",
+                    "column_order": 5
                 },
                 {
                     "data_path": "action_result.parameter.group_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "Group Name",
+                    "column_order": 4
                 },
                 {
                     "data_path": "action_result.parameter.policy_name",
                     "data_type": "string",
                     "example_values": [
                         "AliyunMTSFullAccess"
-                    ]
+                    ],
+                    "column_name": "Policy Name",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.policy_type",
                     "data_type": "string",
                     "example_values": [
                         "System"
-                    ]
+                    ],
+                    "column_name": "Policy Type",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.role_name",
                     "data_type": "string",
                     "example_values": [
                         "test"
-                    ]
+                    ],
+                    "column_name": "Role Name",
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.user_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "User Name",
+                    "column_order": 3
                 },
                 {
                     "data_path": "action_result.data",
@@ -853,42 +890,54 @@
                     "example_values": [
                         "success",
                         "failed"
-                    ]
+                    ],
+                    "column_name": "Status",
+                    "column_order": 5
                 },
                 {
                     "data_path": "action_result.parameter.group_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "Group Name",
+                    "column_order": 4
                 },
                 {
                     "data_path": "action_result.parameter.policy_name",
                     "data_type": "string",
                     "example_values": [
                         "AliyunMTSFullAccess"
-                    ]
+                    ],
+                    "column_name": "Policy Name",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.policy_type",
                     "data_type": "string",
                     "example_values": [
                         "System"
-                    ]
+                    ],
+                    "column_name": "Policy Type",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.role_name",
                     "data_type": "string",
                     "example_values": [
                         "test"
-                    ]
+                    ],
+                    "column_name": "Role Name",
+                    "column_order": 3
                 },
                 {
                     "data_path": "action_result.parameter.user_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "User Name",
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.data",
@@ -1069,7 +1118,11 @@
                 }
             ],
             "render": {
-                "type": "table"
+                "type": "custom",
+                "width": 10,
+                "height": 10,
+                "title": "Group Info",
+                "view": "alibabaram_view.display_view"
             },
             "versions": "EQ(*)"
         },
@@ -1233,22 +1286,29 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "example_values": [
-                        "success"
-                    ]
+                        "success",
+                        "failed"
+                    ],
+                    "column_name": "Status",
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.groups",
                     "data_type": "string",
                     "example_values": [
                         "test1,test_blank"
-                    ]
+                    ],
+                    "column_name": "Group Name",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.user_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "User Name",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data",
@@ -1327,36 +1387,47 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "example_values": [
-                        "success"
-                    ]
+                        "success",
+                        "failed"
+                    ],
+                    "column_name": "Status",
+                    "column_order": 4
                 },
                 {
                     "data_path": "action_result.parameter.group_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "Group Name",
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.policies",
                     "data_type": "string",
                     "example_values": [
                         "AliyunOSSFullAccess,AliyunRDSFullAccess"
-                    ]
+                    ],
+                    "column_name": "Policies",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.policy_type",
                     "data_type": "string",
                     "example_values": [
                         "System"
-                    ]
+                    ],
+                    "column_name": "Policy Type",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.user_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "User Name",
+                    "column_order": 3
                 },
                 {
                     "data_path": "action_result.data",
@@ -1413,14 +1484,18 @@
                     "data_type": "string",
                     "example_values": [
                         "success"
-                    ]
+                    ],
+                    "column_name": "Status",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.user_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "User Name",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data",
@@ -1477,14 +1552,18 @@
                     "data_type": "string",
                     "example_values": [
                         "success"
-                    ]
+                    ],
+                    "column_name": "Status",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.user_name",
                     "data_type": "string",
                     "example_values": [
                         "test1"
-                    ]
+                    ],
+                    "column_name": "User Name",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data",
@@ -1576,7 +1655,8 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ]
                 },
                 {
@@ -1632,21 +1712,27 @@
                     "data_type": "string",
                     "example_values": [
                         "This is a test comment for updating existing user"
-                    ]
+                    ],
+                    "column_name": "Comments",
+                    "column_order": 7
                 },
                 {
                     "data_path": "action_result.data.*.CreateDate",
                     "data_type": "string",
                     "example_values": [
                         "2019-07-19T04:28:48Z"
-                    ]
+                    ],
+                    "column_name": "Create Date",
+                    "column_order": 4
                 },
                 {
                     "data_path": "action_result.data.*.DisplayName",
                     "data_type": "string",
                     "example_values": [
                         "Test1_New"
-                    ]
+                    ],
+                    "column_name": "Display Name",
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.data.*.Email",
@@ -1656,28 +1742,36 @@
                     ],
                     "contains": [
                         "email"
-                    ]
+                    ],
+                    "column_name": "Email",
+                    "column_order": 3
                 },
                 {
                     "data_path": "action_result.data.*.MobilePhone",
                     "data_type": "string",
                     "example_values": [
                         "1-4155096996"
-                    ]
+                    ],
+                    "column_name": "Mobile Phone",
+                    "column_order": 6
                 },
                 {
                     "data_path": "action_result.data.*.UpdateDate",
                     "data_type": "string",
                     "example_values": [
                         "2019-07-22T02:36:18Z"
-                    ]
+                    ],
+                    "column_name": "Update Date",
+                    "column_order": 5
                 },
                 {
                     "data_path": "action_result.data.*.UserId",
                     "data_type": "string",
                     "example_values": [
                         "291581163510528087"
-                    ]
+                    ],
+                    "column_name": "User ID",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data.*.UserName",
@@ -1687,7 +1781,9 @@
                     ],
                     "contains": [
                         "user name"
-                    ]
+                    ],
+                    "column_name": "User Name",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.summary",

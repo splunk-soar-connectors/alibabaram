@@ -37,4 +37,10 @@ def display_view(provides, all_app_runs, context):
                 continue
             results.append(ctx_result)
 
-    return 'alibabaram_describe_group.html'
+    if provides == "describe group":
+        ret_val = 'alibabaram_describe_group.html'
+
+    if provides == "describe user":
+        ret_val = 'alibabaram_describe_user.html'
+
+    return ret_val
