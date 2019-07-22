@@ -1394,22 +1394,16 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "list user groups",
-            "identifier": "list_user_groups",
-            "description": "Get the groups that the user is a member of",
-            "type": "investigate",
-            "read_only": true,
+            "action": "strip policies",
+            "identifier": "strip_policies",
+            "description": "Remove all the existing policies of the provided user",
+            "type": "generic",
+            "read_only": false,
             "parameters": {
-                "username": {
-                    "description": "Username (to get goups it belongs to)",
+                "user_name": {
+                    "description": "Username of the user",
                     "data_type": "string",
                     "required": true,
-                    "primary": true,
-                    "contains": [
-                        "user name"
-                    ],
-                    "value_list": [],
-                    "default": "",
                     "order": 0
                 }
             },
@@ -1417,17 +1411,16 @@
                 {
                     "data_path": "action_result.status",
                     "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 1
+                    "example_values": [
+                        "success"
+                    ]
                 },
                 {
-                    "data_path": "action_result.parameter.username",
+                    "data_path": "action_result.parameter.user_name",
                     "data_type": "string",
-                    "contains": [
-                        "user name"
-                    ],
-                    "column_name": "username",
-                    "column_order": 0
+                    "example_values": [
+                        "test1"
+                    ]
                 },
                 {
                     "data_path": "action_result.data",
@@ -1439,15 +1432,88 @@
                 },
                 {
                     "data_path": "action_result.message",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully removed all the policies from the user: test1"
+                    ]
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "numeric"
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "numeric"
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "strip groups",
+            "identifier": "strip_groups",
+            "description": "Remove all the associations of the groups from the provided user",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "user_name": {
+                    "description": "Username of the user",
+                    "data_type": "string",
+                    "required": true,
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.user_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully removed all the group associations of the user: test1"
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
                 }
             ],
             "render": {
@@ -1458,38 +1524,29 @@
         {
             "action": "update user",
             "identifier": "update_user",
-            "description": "Updates the basic information about a RAM user",
+            "description": "Updates the basic information of the RAM user",
             "type": "generic",
             "read_only": false,
             "parameters": {
-                "username": {
-                    "description": "RAM User name",
+                "user_name": {
+                    "description": "Username of the user",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0
                 },
                 "comment": {
-                    "description": "The comment on the new RAM user",
+                    "description": "The comment for updating the RAM user details",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 1
                 },
                 "email": {
-                    "description": "Updated Email of the RAM user",
+                    "description": "Updated email of the RAM user",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 2
                 },
                 "mobile_number": {
@@ -1497,9 +1554,6 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 3
                 },
                 "new_username": {
@@ -1507,57 +1561,133 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 4
+                },
+                "display_name": {
+                    "description": "Updated display name of the RAM user",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 5
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.status",
                     "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 5
+                    "example_values": [
+                        "success"
+                    ]
                 },
                 {
                     "data_path": "action_result.parameter.comment",
                     "data_type": "string",
-                    "contains": [],
-                    "column_name": "comment",
-                    "column_order": 1
+                    "example_values": [
+                        "This is a test comment for updating existing user"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.display_name",
+                    "data_type": "string",
+                    "example_values": [
+                        "Test1_New"
+                    ]
                 },
                 {
                     "data_path": "action_result.parameter.email",
                     "data_type": "string",
-                    "contains": [],
-                    "column_name": "email",
-                    "column_order": 2
+                    "example_values": [
+                        "test1_new@5211362082633686.onaliyun.com"
+                    ],
+                    "contains": [
+                        "email"
+                    ]
                 },
                 {
                     "data_path": "action_result.parameter.mobile_number",
                     "data_type": "string",
-                    "contains": [],
-                    "column_name": "mobile_number",
-                    "column_order": 3
+                    "example_values": [
+                        "1-4155096996"
+                    ]
                 },
                 {
                     "data_path": "action_result.parameter.new_username",
                     "data_type": "string",
-                    "contains": [],
-                    "column_name": "new_username",
-                    "column_order": 4
+                    "example_values": [
+                        "test1_new"
+                    ],
+                    "contains": [
+                        "user name"
+                    ]
                 },
                 {
-                    "data_path": "action_result.parameter.username",
+                    "data_path": "action_result.parameter.user_name",
                     "data_type": "string",
-                    "contains": [],
-                    "column_name": "username",
-                    "column_order": 0
+                    "example_values": [
+                        "test1"
+                    ]
                 },
                 {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
+                    "data_path": "action_result.data.*.Comments",
+                    "data_type": "string",
+                    "example_values": [
+                        "This is a test comment for updating existing user"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.CreateDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-19T04:28:48Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.DisplayName",
+                    "data_type": "string",
+                    "example_values": [
+                        "Test1_New"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.Email",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1_new@5211362082633686.onaliyun.com"
+                    ],
+                    "contains": [
+                        "email"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.MobilePhone",
+                    "data_type": "string",
+                    "example_values": [
+                        "1-4155096996"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.UpdateDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-22T02:36:18Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.UserId",
+                    "data_type": "string",
+                    "example_values": [
+                        "291581163510528087"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.UserName",
+                    "data_type": "string",
+                    "example_values": [
+                        "test1_new"
+                    ],
+                    "contains": [
+                        "user name"
+                    ]
                 },
                 {
                     "data_path": "action_result.summary",
@@ -1565,15 +1695,24 @@
                 },
                 {
                     "data_path": "action_result.message",
-                    "data_type": "string"
+                    "data_type": "string",
+                    "example_values": [
+                        "Successfully updated the details for the User: test1"
+                    ]
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "numeric"
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "numeric"
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
                 }
             ],
             "render": {
