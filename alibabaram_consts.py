@@ -5,6 +5,7 @@
 # without a valid written license from Splunk Inc. is PROHIBITED.
 # Define your constants here
 
+ALIBABARAM_MAX_ITEMS = 1000
 ALIBABARAM_JSON_KEY = "json"
 ALIBABARAM_JSON_FROM = "from"
 ALIBABARAM_JSON_TO = "to"

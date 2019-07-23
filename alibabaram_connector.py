@@ -57,7 +57,7 @@ class AlibabaRamConnector(BaseConnector):
         next_token = None
 
         if set_max_items:
-            ram_request.set_MaxItems("100")
+            ram_request.set_MaxItems(ALIBABARAM_MAX_ITEMS)
 
         while True:
             try:
@@ -734,19 +734,18 @@ class AlibabaRamConnector(BaseConnector):
             ram_request = ListGroupsForUserRequest()
             ram_request.set_UserName(user_name)
             ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
-            response = self._client.do_action_with_exception(ram_request)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, "Error occurred while creating request for fetching groups of the user: {0}. Error: {1}".format(user_name, str(e)))
+            action_result.set_status(
+                    phantom.APP_ERROR, ALIBABARAM_ERROR_CREATING_REQUEST.format(
+                        item_name=ALIBABARAM_JSON_GROUPS.lower(), target_item=ALIBABARAM_JSON_USER.lower(), error=str(e)))
+            return None
 
-        try:
-            resp_json = json.loads(response)
-        except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, 'Error occurred while parsing the response JSON. Error: {0}'.format(str(e)))
+        user_groups = self._paginator(ALIBABARAM_JSON_GROUPS, ram_request, None, action_result, False)
 
-        if resp_json and resp_json.get(ALIBABARAM_JSON_GROUPS) and resp_json.get(ALIBABARAM_JSON_GROUPS).get(ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING.get(ALIBABARAM_JSON_GROUPS)):
-            user_details.update({ALIBABARAM_JSON_USER_GROUPS: resp_json.get(ALIBABARAM_JSON_GROUPS).get(ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING.get(ALIBABARAM_JSON_GROUPS))})
-        else:
-            user_details.update({ALIBABARAM_JSON_USER_GROUPS: []})
+        if user_groups is None:
+            return None
+
+        user_details.update({ALIBABARAM_JSON_USER_GROUPS: user_groups})
 
         action_result.add_data(user_details)
 

@@ -96,7 +96,11 @@
             <tr>
                 <td>User Name</td>
                 <td>
-                    {{ result.param.user_name }}
+                    <a href="javascript:;" onclick="context_menu(this, [{'contains': ['user name'], 'value':'{{ result.param.user_name }}' }], 0, {{ container.id }}, null, false);">
+                        {{ result.param.user_name }}
+                        &nbsp;
+                        <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                    </a>
                 </td>
             </tr>
         </table>
@@ -121,10 +125,28 @@
                     <tbody>    
                         <tr>
                             <td>{{ data.UserId }}</td>
-                            <td>{{ data.UserName }}</td>
-                            <td>{{ data.DisplayName }}</td>
+                            <td>
+                                <a href="javascript:;" onclick="context_menu(this, [{'contains': ['user name'], 'value':'{{ data.UserName }}' }], 0, {{ container.id }}, null, false);">
+                                    {{ data.UserName }}
+                                    &nbsp;
+                                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram user display name'], 'value':'{{ data.DisplayName }}' }], 0, {{ container.id }}, null, false);">
+                                    {{ data.DisplayName }}
+                                    &nbsp;
+                                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                                </a>
+                            </td>
                             <td>{{ data.MobilePhone }}</td>
-                            <td>{{ data.Email }}</td>
+                            <td>
+                                <a href="javascript:;" onclick="context_menu(this, [{'contains': ['email'], 'value':'{{ data.Email }}' }], 0, {{ container.id }}, null, false);">
+                                    {{ data.Email }}
+                                    &nbsp;
+                                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                                </a>
+                            </td>
                             <td>{{ data.CreateDate }}</td>
                             <td>{{ data.UpdateDate }}</td>
                             <td>{{ data.LastLoginDate }}</td>
@@ -149,7 +171,14 @@
                             {% if data.user_groups %}
                                 {% for user_group in data.user_groups %}
                                 <tr>
-                                    <td>{{ user_group.GroupName }}</td>
+                                    <td>
+                                        <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram group name'], 'value':'{{ user_group.GroupName }}' }], 0, {{ container.id }}, null, false);">
+                                            {{ user_group.GroupName }}
+                                            &nbsp;
+                                            <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                                        </a>
+                                    {{ user_group.GroupName }}
+                                    </td>
                                     <td>{{ user_group.JoinDate }}</td>
                                     <td>{{ user_group.Comments }}</td>
                                 </tr>

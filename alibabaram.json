@@ -131,7 +131,7 @@
                     "example_values": [
                         "2019-07-19T04:28:48Z"
                     ],
-                    "column_name": "Created Date",
+                    "column_name": "Create Date",
                     "column_order": 3
                 },
                 {
@@ -139,6 +139,9 @@
                     "data_type": "string",
                     "example_values": [
                         "test1"
+                    ],
+                    "contains": [
+                        "alibabaram user display name"
                     ],
                     "column_name": "Display Name",
                     "column_order": 2
@@ -149,7 +152,7 @@
                     "example_values": [
                         "2019-07-19T04:28:48Z"
                     ],
-                    "column_name": "Updated Date",
+                    "column_name": "Update Date",
                     "column_order": 4
                 },
                 {
@@ -170,7 +173,7 @@
                     "contains": [
                         "user name"
                     ],
-                    "column_name": "User Name",
+                    "column_name": "Username",
                     "column_order": 1
                 },
                 {
@@ -243,7 +246,7 @@
                     "example_values": [
                         "acs:ram::5211362082633686:role/test"
                     ],
-                    "column_name": "ARN",
+                    "column_name": "Roles ARN",
                     "column_order": 4
                 },
                 {
@@ -252,7 +255,7 @@
                     "example_values": [
                         "2019-07-19T04:32:18Z"
                     ],
-                    "column_name": "Created Date",
+                    "column_name": "Create Date",
                     "column_order": 3
                 },
                 {
@@ -278,6 +281,9 @@
                     "data_type": "string",
                     "example_values": [
                         "test"
+                    ],
+                    "contains": [
+                        "alibabaram role name"
                     ],
                     "column_name": "Role Name",
                     "column_order": 1
@@ -358,7 +364,7 @@
                     "example_values": [
                         "2019-07-02T20:39:17Z"
                     ],
-                    "column_name": "Created Date",
+                    "column_name": "Create Date",
                     "column_order": 1
                 },
                 {
@@ -366,6 +372,9 @@
                     "data_type": "string",
                     "example_values": [
                         "alibaba-test-group"
+                    ],
+                    "contains": [
+                        "alibabaram group name"
                     ],
                     "column_name": "Group Name",
                     "column_order": 0
@@ -376,7 +385,7 @@
                     "example_values": [
                         "2019-07-02T20:39:17Z"
                     ],
-                    "column_name": "Updated Date",
+                    "column_name": "Update Date",
                     "column_order": 2
                 },
                 {
@@ -470,7 +479,7 @@
                     "data_path": "action_result.data.*.Description",
                     "data_type": "string",
                     "example_values": [
-                        "\u7ba1\u7406\u6240\u6709\u963f\u91cc\u4e91\u8d44\u6e90\u7684\u6743\u9650"
+                        "This is test description"
                     ],
                     "column_name": "Description",
                     "column_order": 2
@@ -481,6 +490,9 @@
                     "example_values": [
                         "AdministratorAccess"
                     ],
+                    "contains": [
+                        "alibabaram policy name"
+                    ],
                     "column_name": "Policy Name",
                     "column_order": 0
                 },
@@ -489,6 +501,9 @@
                     "data_type": "string",
                     "example_values": [
                         "System"
+                    ],
+                    "contains": [
+                        "alibabaram policy type"
                     ],
                     "column_name": "Policy Type",
                     "column_order": 1
@@ -547,12 +562,20 @@
                 "user_name": {
                     "description": "Username of the user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": true,
                     "order": 0
                 },
                 "group_name": {
                     "description": "Name of the group",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "required": true,
                     "order": 1
                 }
@@ -574,6 +597,9 @@
                     "example_values": [
                         "test1"
                     ],
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "column_name": "Group Name",
                     "column_order": 1
                 },
@@ -583,7 +609,10 @@
                     "example_values": [
                         "test1"
                     ],
-                    "column_name": "User Name",
+                    "contains": [
+                        "user name"
+                    ],
+                    "column_name": "Username",
                     "column_order": 0
                 },
                 {
@@ -632,12 +661,20 @@
                 "user_name": {
                     "description": "Username of the user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": true,
                     "order": 0
                 },
                 "group_name": {
                     "description": "Name of the group",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "required": true,
                     "order": 1
                 }
@@ -659,6 +696,9 @@
                     "example_values": [
                         "test1"
                     ],
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "column_name": "Group Name",
                     "column_order": 1
                 },
@@ -668,7 +708,10 @@
                     "example_values": [
                         "test1"
                     ],
-                    "column_name": "User Name",
+                    "contains": [
+                        "user name"
+                    ],
+                    "column_name": "Username",
                     "column_order": 0
                 },
                 {
@@ -717,12 +760,20 @@
                 "policy_name": {
                     "description": "Name of the policy",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram policy name"
+                    ],
                     "required": true,
                     "order": 0
                 },
                 "policy_type": {
                     "description": "Type of the policy",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram policy type"
+                    ],
                     "required": true,
                     "value_list": [
                         "System",
@@ -733,18 +784,30 @@
                 "user_name": {
                     "description": "Username of the user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": false,
                     "order": 2
                 },
                 "group_name": {
                     "description": "Name of the group",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "required": false,
                     "order": 3
                 },
                 "role_name": {
                     "description": "Name of the role",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram role name"
+                    ],
                     "required": false,
                     "order": 4
                 }
@@ -766,6 +829,9 @@
                     "example_values": [
                         "test1"
                     ],
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "column_name": "Group Name",
                     "column_order": 4
                 },
@@ -774,6 +840,9 @@
                     "data_type": "string",
                     "example_values": [
                         "AliyunMTSFullAccess"
+                    ],
+                    "contains": [
+                        "alibabaram policy name"
                     ],
                     "column_name": "Policy Name",
                     "column_order": 0
@@ -784,6 +853,9 @@
                     "example_values": [
                         "System"
                     ],
+                    "contains": [
+                        "alibabaram policy type"
+                    ],
                     "column_name": "Policy Type",
                     "column_order": 1
                 },
@@ -792,6 +864,9 @@
                     "data_type": "string",
                     "example_values": [
                         "test"
+                    ],
+                    "contains": [
+                        "alibabaram role name"
                     ],
                     "column_name": "Role Name",
                     "column_order": 2
@@ -802,7 +877,10 @@
                     "example_values": [
                         "test1"
                     ],
-                    "column_name": "User Name",
+                    "contains": [
+                        "user name"
+                    ],
+                    "column_name": "Username",
                     "column_order": 3
                 },
                 {
@@ -851,12 +929,20 @@
                 "policy_name": {
                     "description": "Name of the policy",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram policy name"
+                    ],
                     "required": true,
                     "order": 0
                 },
                 "policy_type": {
                     "description": "Type of the policy",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram policy type"
+                    ],
                     "required": true,
                     "value_list": [
                         "System",
@@ -867,18 +953,30 @@
                 "user_name": {
                     "description": "Username of the user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": false,
                     "order": 2
                 },
                 "group_name": {
                     "description": "Name of the group",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "required": false,
                     "order": 3
                 },
                 "role_name": {
                     "description": "Name of the role",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram role name"
+                    ],
                     "required": false,
                     "order": 4
                 }
@@ -900,6 +998,9 @@
                     "example_values": [
                         "test1"
                     ],
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "column_name": "Group Name",
                     "column_order": 4
                 },
@@ -908,6 +1009,9 @@
                     "data_type": "string",
                     "example_values": [
                         "AliyunMTSFullAccess"
+                    ],
+                    "contains": [
+                        "alibabaram policy name"
                     ],
                     "column_name": "Policy Name",
                     "column_order": 0
@@ -918,6 +1022,9 @@
                     "example_values": [
                         "System"
                     ],
+                    "contains": [
+                        "alibabaram policy type"
+                    ],
                     "column_name": "Policy Type",
                     "column_order": 1
                 },
@@ -926,6 +1033,9 @@
                     "data_type": "string",
                     "example_values": [
                         "test"
+                    ],
+                    "contains": [
+                        "alibabaram role name"
                     ],
                     "column_name": "Role Name",
                     "column_order": 3
@@ -936,7 +1046,10 @@
                     "example_values": [
                         "test1"
                     ],
-                    "column_name": "User Name",
+                    "contains": [
+                        "user name"
+                    ],
+                    "column_name": "Username",
                     "column_order": 2
                 },
                 {
@@ -977,13 +1090,17 @@
         {
             "action": "describe user",
             "identifier": "describe_user",
-            "description": "Fetch the user details and the details of the asociated user groups",
+            "description": "Fetch the user details and the details of the associated user groups",
             "type": "investigate",
             "read_only": true,
             "parameters": {
                 "user_name": {
                     "description": "Username of the user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": true,
                     "order": 0
                 }
@@ -1002,13 +1119,16 @@
                     "data_type": "string",
                     "example_values": [
                         "test1"
+                    ],
+                    "contains": [
+                        "user name"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.Comments",
                     "data_type": "string",
                     "example_values": [
-                        ""
+                        "This is test comment"
                     ]
                 },
                 {
@@ -1023,27 +1143,33 @@
                     "data_type": "string",
                     "example_values": [
                         "test1"
+                    ],
+                    "contains": [
+                        "alibabaram user display name"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.Email",
                     "data_type": "string",
                     "example_values": [
-                        ""
+                        "test1@5211362082633686.onaliyun.com"
+                    ],
+                    "contains": [
+                        "email"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.LastLoginDate",
                     "data_type": "string",
                     "example_values": [
-                        ""
+                        "2019-07-18T04:28:48Z"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.MobilePhone",
                     "data_type": "string",
                     "example_values": [
-                        ""
+                        "1-4153203200"
                     ]
                 },
                 {
@@ -1074,14 +1200,17 @@
                     "data_path": "action_result.data.*.user_groups.*.Comments",
                     "data_type": "string",
                     "example_values": [
-                        "This group created for testing purpose."
+                        "This group is created for testing purpose"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.user_groups.*.GroupName",
                     "data_type": "string",
                     "example_values": [
-                        "test_deep"
+                        "test_1"
+                    ],
+                    "contains": [
+                        "alibabaram group name"
                     ]
                 },
                 {
@@ -1136,6 +1265,10 @@
                 "group_name": {
                     "description": "Name of the group",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "required": true,
                     "order": 0
                 }
@@ -1152,6 +1285,9 @@
                 {
                     "data_path": "action_result.parameter.group_name",
                     "data_type": "string",
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "example_values": [
                         "test1"
                     ]
@@ -1174,7 +1310,7 @@
                     "data_path": "action_result.data.*.policies.*.Description",
                     "data_type": "string",
                     "example_values": [
-                        "\u53ea\u8bfb\u8bbf\u95ee\u6240\u6709\u963f\u91cc\u4e91\u8d44\u6e90\u7684\u6743\u9650"
+                        "This is test description"
                     ]
                 },
                 {
@@ -1182,6 +1318,9 @@
                     "data_type": "string",
                     "example_values": [
                         "ReadOnlyAccess"
+                    ],
+                    "contains": [
+                        "alibabaram policy name"
                     ]
                 },
                 {
@@ -1189,13 +1328,19 @@
                     "data_type": "string",
                     "example_values": [
                         "System"
+                    ],
+                    "contains": [
+                        "alibabaram policy type"
                     ]
                 },
                 {
                     "data_path": "action_result.data.*.users.*.DisplayName",
                     "data_type": "string",
                     "example_values": [
-                        "test_d"
+                        "test_1"
+                    ],
+                    "contains": [
+                        "alibabaram user display name"
                     ]
                 },
                 {
@@ -1209,7 +1354,7 @@
                     "data_path": "action_result.data.*.users.*.UserName",
                     "data_type": "string",
                     "example_values": [
-                        "test_d"
+                        "test_1"
                     ],
                     "contains": [
                         "user name"
@@ -1271,12 +1416,20 @@
                 "user_name": {
                     "description": "Username of the user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": true,
                     "order": 0
                 },
                 "groups": {
                     "description": "Comma-separated list of group names",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram groups"
+                    ],
                     "required": true,
                     "order": 1
                 }
@@ -1298,6 +1451,9 @@
                     "example_values": [
                         "test1,test_blank"
                     ],
+                    "contains": [
+                        "alibabaram groups"
+                    ],
                     "column_name": "Group Name",
                     "column_order": 1
                 },
@@ -1307,7 +1463,10 @@
                     "example_values": [
                         "test1"
                     ],
-                    "column_name": "User Name",
+                    "contains": [
+                        "user name"
+                    ],
+                    "column_name": "Username",
                     "column_order": 0
                 },
                 {
@@ -1356,30 +1515,46 @@
                 "user_name": {
                     "description": "Username of the user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": false,
                     "order": 0
                 },
                 "group_name": {
                     "description": "Name of the group",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "required": false,
                     "order": 1
                 },
                 "policies": {
                     "description": "Comma-separated list of policy names",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram policies"
+                    ],
                     "required": true,
                     "order": 2
                 },
                 "policy_type": {
                     "description": "Type of the policy",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram policy type"
+                    ],
                     "required": true,
                     "value_list": [
                         "System",
                         "Custom"
                     ],
-                    "order": 1
+                    "order": 3
                 }
             },
             "output": [
@@ -1399,6 +1574,9 @@
                     "example_values": [
                         "test1"
                     ],
+                    "contains": [
+                        "alibabaram group name"
+                    ],
                     "column_name": "Group Name",
                     "column_order": 2
                 },
@@ -1407,6 +1585,9 @@
                     "data_type": "string",
                     "example_values": [
                         "AliyunOSSFullAccess,AliyunRDSFullAccess"
+                    ],
+                    "contains": [
+                        "alibabaram policies"
                     ],
                     "column_name": "Policies",
                     "column_order": 0
@@ -1417,6 +1598,9 @@
                     "example_values": [
                         "System"
                     ],
+                    "contains": [
+                        "alibabaram policy type"
+                    ],
                     "column_name": "Policy Type",
                     "column_order": 1
                 },
@@ -1426,7 +1610,10 @@
                     "example_values": [
                         "test1"
                     ],
-                    "column_name": "User Name",
+                    "contains": [
+                        "user name"
+                    ],
+                    "column_name": "Username",
                     "column_order": 3
                 },
                 {
@@ -1474,6 +1661,10 @@
                 "user_name": {
                     "description": "Username of the user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": true,
                     "order": 0
                 }
@@ -1483,7 +1674,8 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ],
                     "column_name": "Status",
                     "column_order": 1
@@ -1494,7 +1686,10 @@
                     "example_values": [
                         "test1"
                     ],
-                    "column_name": "User Name",
+                    "contains": [
+                        "user name"
+                    ],
+                    "column_name": "Username",
                     "column_order": 0
                 },
                 {
@@ -1542,6 +1737,10 @@
                 "user_name": {
                     "description": "Username of the user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": true,
                     "order": 0
                 }
@@ -1551,7 +1750,8 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "example_values": [
-                        "success"
+                        "success",
+                        "failed"
                     ],
                     "column_name": "Status",
                     "column_order": 1
@@ -1562,7 +1762,10 @@
                     "example_values": [
                         "test1"
                     ],
-                    "column_name": "User Name",
+                    "contains": [
+                        "user name"
+                    ],
+                    "column_name": "Username",
                     "column_order": 0
                 },
                 {
@@ -1604,49 +1807,60 @@
             "action": "update user",
             "identifier": "update_user",
             "description": "Updates the basic information of the RAM user",
+            "verbose": "As per the API document of Alibaba RAM, the parameter new_username is not mandatory for running the action update user and hence, it has been kept optional in the action. But, the Aliyun SDK used here still gives an error mentioning that new_username is mandatory if we do not provide the value for new_username. The mobile_number parameter should follow the format <International Area Code>-<Mobile Phone Number> e.g. 86-18600001234",
             "type": "generic",
             "read_only": false,
             "parameters": {
                 "user_name": {
                     "description": "Username of the user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": true,
-                    "primary": false,
                     "order": 0
                 },
                 "comment": {
                     "description": "The comment for updating the RAM user details",
                     "data_type": "string",
                     "required": false,
-                    "primary": false,
                     "order": 1
                 },
                 "email": {
                     "description": "Updated email of the RAM user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "email"
+                    ],
                     "required": false,
-                    "primary": false,
                     "order": 2
                 },
                 "mobile_number": {
                     "description": "Updated mobile number of the RAM user",
                     "data_type": "string",
                     "required": false,
-                    "primary": false,
                     "order": 3
                 },
                 "new_username": {
                     "description": "Updated username of the RAM user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "user name"
+                    ],
                     "required": false,
-                    "primary": false,
                     "order": 4
                 },
                 "display_name": {
                     "description": "Updated display name of the RAM user",
                     "data_type": "string",
+                    "primary": true,
+                    "contains": [
+                        "alibabaram user display name"
+                    ],
                     "required": false,
-                    "primary": false,
                     "order": 5
                 }
             },
@@ -1671,6 +1885,9 @@
                     "data_type": "string",
                     "example_values": [
                         "Test1_New"
+                    ],
+                    "contains": [
+                        "alibabaram user display name"
                     ]
                 },
                 {
@@ -1705,6 +1922,9 @@
                     "data_type": "string",
                     "example_values": [
                         "test1"
+                    ],
+                    "contains": [
+                        "user name"
                     ]
                 },
                 {
@@ -1730,6 +1950,9 @@
                     "data_type": "string",
                     "example_values": [
                         "Test1_New"
+                    ],
+                    "contains": [
+                        "alibabaram user display name"
                     ],
                     "column_name": "Display Name",
                     "column_order": 2
@@ -1782,7 +2005,7 @@
                     "contains": [
                         "user name"
                     ],
-                    "column_name": "User Name",
+                    "column_name": "Username",
                     "column_order": 1
                 },
                 {
