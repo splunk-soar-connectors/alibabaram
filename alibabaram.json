@@ -1686,7 +1686,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "strip policies",
+            "action": "remove policies",
             "identifier": "strip_policies",
             "description": "Remove all the existing policies of the provided user",
             "type": "generic",
@@ -1762,7 +1762,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "strip groups",
+            "action": "remove groups",
             "identifier": "strip_groups",
             "description": "Remove all the associations of the groups from the provided user",
             "type": "generic",
