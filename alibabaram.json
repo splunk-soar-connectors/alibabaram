@@ -1221,6 +1221,41 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.user_policies.*.AttachDate",
+                    "data_type": "string",
+                    "example_values": [
+                        "2019-07-22T07:57:36Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.user_policies.*.DefaultVersion",
+                    "data_type": "string",
+                    "example_values": [
+                        "v1"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.user_policies.*.Description",
+                    "data_type": "string",
+                    "example_values": [
+                        "This is sample testing description"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.user_policies.*.PolicyName",
+                    "data_type": "string",
+                    "example_values": [
+                        "AdministratorAccess"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.user_policies.*.PolicyType",
+                    "data_type": "string",
+                    "example_values": [
+                        "System"
+                    ]
+                },
+                {
                     "data_path": "action_result.summary",
                     "data_type": "string"
                 },
