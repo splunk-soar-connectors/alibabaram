@@ -1,7 +1,7 @@
 {
     "appid": "29b675db-ba53-444c-bd99-dd1304b919fe",
     "name": "Alibaba RAM",
-    "description": "This app integrates with Alibaba Resource Access Management (Alibaba RAM) to support various containment, corrective and investigate actions",
+    "description": "This app integrates with Alibaba Resource Access Management (Alibaba RAM) to support various containment, corrective, and investigate actions",
     "type": "identity management",
     "product_vendor": "Alibaba",
     "logo": "logo_alibabaram.svg",
@@ -89,7 +89,7 @@
         {
             "action": "list users",
             "identifier": "list_users",
-            "description": "List all the RAM users",
+            "description": "List the RAM users",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -171,7 +171,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "column_name": "Username",
                     "column_order": 1
@@ -213,7 +213,7 @@
         {
             "action": "list roles",
             "identifier": "list_roles",
-            "description": "List all the RAM roles",
+            "description": "List the RAM roles",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -325,7 +325,7 @@
         {
             "action": "list groups",
             "identifier": "list_groups",
-            "description": "List all the RAM user groups",
+            "description": "List the RAM user groups",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -425,7 +425,7 @@
         {
             "action": "list policies",
             "identifier": "list_policies",
-            "description": "List all the RAM policies",
+            "description": "List the RAM policies",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -564,7 +564,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": true,
                     "order": 0
@@ -610,7 +610,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "column_name": "Username",
                     "column_order": 0
@@ -663,7 +663,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": true,
                     "order": 0
@@ -709,7 +709,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "column_name": "Username",
                     "column_order": 0
@@ -753,7 +753,7 @@
             "action": "attach policy",
             "identifier": "attach_policy",
             "undo": "detach policy",
-            "description": "Attach a policy to the provided user, group or role",
+            "description": "Attach a policy to the provided user, group, or role",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -786,7 +786,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": false,
                     "order": 2
@@ -878,7 +878,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "column_name": "Username",
                     "column_order": 3
@@ -955,7 +955,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": false,
                     "order": 2
@@ -1047,7 +1047,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "column_name": "Username",
                     "column_order": 2
@@ -1090,7 +1090,7 @@
         {
             "action": "describe user",
             "identifier": "describe_user",
-            "description": "Fetch the user details and the details of the associated user groups",
+            "description": "Fetch the user details and the details of the associated user groups and user policies",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -1099,7 +1099,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": true,
                     "order": 0
@@ -1121,7 +1121,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ]
                 },
                 {
@@ -1193,7 +1193,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ]
                 },
                 {
@@ -1258,7 +1258,7 @@
         {
             "action": "describe group",
             "identifier": "describe_group",
-            "description": "List all the policies and the users details for the provided group name",
+            "description": "List all policies and users details for the provided group name",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -1357,7 +1357,7 @@
                         "test_1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ]
                 },
                 {
@@ -1409,7 +1409,6 @@
             "action": "replace groups",
             "identifier": "replace_groups",
             "description": "Replace all the existing groups of the user with the provided groups",
-            "verbose": "If the action fails at an intermediate stage while updating the groups, the groups replacement process till that point of time can not be undone",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -1418,7 +1417,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": true,
                     "order": 0
@@ -1464,7 +1463,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "column_name": "Username",
                     "column_order": 0
@@ -1508,7 +1507,7 @@
             "action": "replace policies",
             "identifier": "replace_policies",
             "description": "Replace all the existing policies of the user or the group with the provided policies",
-            "verbose": "User can either replace the System or the Custom policies of the required entity one at a time but not both together. If the user provides both the user_name and the group_name parameters, the policies will be replaced for both the entities. If the action fails at an intermediate stage while updating the policies, the policies replacement process till that point of time can not be undone.",
+            "verbose": "User can either replace the System or the Custom policies of the required entity one at a time but not both together. If the user provides both the user_name and the group_name parameters, the policies will be replaced for both the entities. If the action fails at an intermediate stage, the policies replacement process until that point of time cannot be undone. i.e. if the policy replacement process is successful for the given user_name and fails while replacing policies for the group_name, then, policies already replaced for the users in the earlier steps cannot be undone.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -1517,7 +1516,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": false,
                     "order": 0
@@ -1611,7 +1610,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "column_name": "Username",
                     "column_order": 3
@@ -1663,7 +1662,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": true,
                     "order": 0
@@ -1687,7 +1686,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "column_name": "Username",
                     "column_order": 0
@@ -1739,7 +1738,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": true,
                     "order": 0
@@ -1763,7 +1762,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "column_name": "Username",
                     "column_order": 0
@@ -1807,7 +1806,7 @@
             "action": "update user",
             "identifier": "update_user",
             "description": "Updates the basic information of the RAM user",
-            "verbose": "As per the API document of Alibaba RAM, the parameter new_username is not mandatory for running the action update user and hence, it has been kept optional in the action. But, the Aliyun SDK used here still gives an error mentioning that new_username is mandatory if we do not provide the value for new_username. The mobile_number parameter should follow the format <International Area Code>-<Mobile Phone Number> e.g. 86-18600001234",
+            "verbose": "As per the API document of Alibaba RAM, the parameter new_username is not mandatory for running the action update user and hence, it has been kept optional in the action. But, the API used here still gives an error mentioning that new_username is mandatory if we do not provide the value for new_username. The mobile_number parameter should follow the format <International Area Code>-<Mobile Phone Number> e.g. 86-18600001234",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -1816,7 +1815,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": true,
                     "order": 0
@@ -1848,7 +1847,7 @@
                     "data_type": "string",
                     "primary": true,
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "required": false,
                     "order": 4
@@ -1914,7 +1913,7 @@
                         "test1_new"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ]
                 },
                 {
@@ -1924,7 +1923,7 @@
                         "test1"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ]
                 },
                 {
@@ -2003,7 +2002,7 @@
                         "test1_new"
                     ],
                     "contains": [
-                        "user name"
+                        "alibabaram user name"
                     ],
                     "column_name": "Username",
                     "column_order": 1

@@ -1,3 +1,4 @@
 [submodule "wheels"]
 	path = wheels
 	url = git@cd.splunkdev.com:phantom-external/aliyun-python-sdk.git
+	ignore = dirty

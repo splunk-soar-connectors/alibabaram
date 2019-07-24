@@ -96,7 +96,7 @@
             <tr>
                 <td>User Name</td>
                 <td>
-                    <a href="javascript:;" onclick="context_menu(this, [{'contains': ['user name'], 'value':'{{ result.param.user_name }}' }], 0, {{ container.id }}, null, false);">
+                    <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram user name'], 'value':'{{ result.param.user_name }}' }], 0, {{ container.id }}, null, false);">
                         {{ result.param.user_name }}
                         &nbsp;
                         <span class="fa fa-caret-down" style="font-size: smaller;"></span>
@@ -126,7 +126,7 @@
                         <tr>
                             <td>{{ data.UserId }}</td>
                             <td>
-                                <a href="javascript:;" onclick="context_menu(this, [{'contains': ['user name'], 'value':'{{ data.UserName }}' }], 0, {{ container.id }}, null, false);">
+                                <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram user name'], 'value':'{{ data.UserName }}' }], 0, {{ container.id }}, null, false);">
                                     {{ data.UserName }}
                                     &nbsp;
                                     <span class="fa fa-caret-down" style="font-size: smaller;"></span>
@@ -156,7 +156,7 @@
             </div>
             <br>
             <div class="results">
-                <h4 class="wf-h4-style">User Group Info</h4>
+                <h4 class="wf-h4-style">User Groups Info</h4>
 
                 <!--Default View-->
                 <table class="wf-table-horizontal datatable">
@@ -177,7 +177,6 @@
                                             &nbsp;
                                             <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                                         </a>
-                                    {{ user_group.GroupName }}
                                     </td>
                                     <td>{{ user_group.JoinDate }}</td>
                                     <td>{{ user_group.Comments }}</td>
@@ -185,6 +184,56 @@
                                 {% endfor %}
                             {% else %}
                                 <tr>
+                                    <td>None</td>
+                                    <td>None</td>
+                                    <td>None</td>
+                                </tr>
+                            {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <div class="results">
+                <h4 class="wf-h4-style">User Policies Info</h4>
+
+                <!--Default View-->
+                <table class="wf-table-horizontal datatable">
+                    <thead>
+                        <tr>
+                            <th>Policy Name</th>
+                            <th>Policy Type</th>
+                            <th>Description</th>
+                            <th>Default Version</th>
+                            <th>Attach Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% if data.user_policies %}
+                                {% for user_policy in data.user_policies %}
+                                    <tr>
+                                        <td>
+                                            <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram policy name'], 'value':'{{ user_policy.PolicyName }}' }], 0, {{ container.id }}, null, false);">
+                                                {{ user_policy.PolicyName }}
+                                                &nbsp;
+                                                <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram policy type'], 'value':'{{ user_policy.PolicyType }}' }], 0, {{ container.id }}, null, false);">
+                                                {{ user_policy.PolicyType }}
+                                                &nbsp;
+                                                <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                                            </a>
+                                        </td>
+                                        <td>{{ user_policy.Description }}</td>
+                                        <td>{{ user_policy.DefaultVersion }}</td>
+                                        <td>{{ user_policy.AttachDate }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td>None</td>
+                                    <td>None</td>
                                     <td>None</td>
                                     <td>None</td>
                                     <td>None</td>

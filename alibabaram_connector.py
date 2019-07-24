@@ -729,7 +729,7 @@ class AlibabaRamConnector(BaseConnector):
             return action_result.set_status(phantom.APP_ERROR, "Unknown error occurred while fetching the general details of the user: {0}".format(user_name))
 
         # 2. Fetch the groups details for the given user
-        # This API call of the SDM does not support the pagination
+        # This API call of the SDK does not support the pagination
         try:
             ram_request = ListGroupsForUserRequest()
             ram_request.set_UserName(user_name)
@@ -746,6 +746,25 @@ class AlibabaRamConnector(BaseConnector):
             return None
 
         user_details.update({ALIBABARAM_JSON_USER_GROUPS: user_groups})
+
+        # 3. Fetch the policies details for the given user
+        # This API call of the SDK does not support the pagination
+        try:
+            ram_request = ListPoliciesForUserRequest()
+            ram_request.set_UserName(user_name)
+            ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
+        except Exception as e:
+            action_result.set_status(
+                    phantom.APP_ERROR, ALIBABARAM_ERROR_CREATING_REQUEST.format(
+                        item_name=ALIBABARAM_JSON_POLICIES.lower(), target_item=ALIBABARAM_JSON_USER.lower(), error=str(e)))
+            return None
+
+        user_policies = self._paginator(ALIBABARAM_JSON_POLICIES, ram_request, None, action_result, False)
+
+        if user_policies is None:
+            return None
+
+        user_details.update({ALIBABARAM_JSON_USER_POLICIES: user_policies})
 
         action_result.add_data(user_details)
 

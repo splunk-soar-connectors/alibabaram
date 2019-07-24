@@ -122,7 +122,7 @@
                                 {% for user in data.users %}
                                 <tr>
                                     <td>
-                                        <a href="javascript:;" onclick="context_menu(this, [{'contains': ['user name'], 'value':'{{ user.UserName }}' }], 0, {{ container.id }}, null, false);">
+                                        <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram user name'], 'value':'{{ user.UserName }}' }], 0, {{ container.id }}, null, false);">
                                             {{ user.UserName }}
                                             &nbsp;
                                             <span class="fa fa-caret-down" style="font-size: smaller;"></span>
@@ -180,7 +180,6 @@
                                             &nbsp;
                                             <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                                         </a>
-                                    {{ policy.PolicyType }}
                                     </td>
                                     <td>{{ policy.AttachDate }}</td>
                                     <td>{{ policy.DefaultVersion }}</td>
