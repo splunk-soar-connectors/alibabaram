@@ -159,17 +159,17 @@
                 <h4 class="wf-h4-style">User Groups Info</h4>
 
                 <!--Default View-->
-                <table class="wf-table-horizontal datatable">
-                    <thead>
-                        <tr>
-                            <th>Group Name</th>
-                            <th>Join Date</th>
-                            <th>Comments</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            {% if data.user_groups %}
-                                {% for user_group in data.user_groups %}
+                {% if data.user_groups %}
+                    <table class="wf-table-horizontal datatable">
+                        <thead>
+                            <tr>
+                                <th>Group Name</th>
+                                <th>Join Date</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user_group in data.user_groups %}
                                 <tr>
                                     <td>
                                         <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram group name'], 'value':'{{ user_group.GroupName }}' }], 0, {{ container.id }}, null, false);">
@@ -181,56 +181,56 @@
                                     <td>{{ user_group.JoinDate }}</td>
                                     <td>{{ user_group.Comments }}</td>
                                 </tr>
-                                {% endfor %}
-                            {% else %}
-                                <h4>No groups associated with this user</h4>
-                            {% endif %}
-                    </tbody>
-                </table>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <h4 class="wf-h4-style">No groups associated with this user</h4>
+                {% endif %}
             </div>
             <br>
             <div class="results">
                 <h4 class="wf-h4-style">User Policies Info</h4>
 
                 <!--Default View-->
-                <table class="wf-table-horizontal datatable">
-                    <thead>
-                        <tr>
-                            <th>Policy Name</th>
-                            <th>Policy Type</th>
-                            <th>Description</th>
-                            <th>Default Version</th>
-                            <th>Attach Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            {% if data.user_policies %}
-                                {% for user_policy in data.user_policies %}
-                                    <tr>
-                                        <td>
-                                            <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram policy name'], 'value':'{{ user_policy.PolicyName }}' }], 0, {{ container.id }}, null, false);">
-                                                {{ user_policy.PolicyName }}
-                                                &nbsp;
-                                                <span class="fa fa-caret-down" style="font-size: smaller;"></span>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram policy type'], 'value':'{{ user_policy.PolicyType }}' }], 0, {{ container.id }}, null, false);">
-                                                {{ user_policy.PolicyType }}
-                                                &nbsp;
-                                                <span class="fa fa-caret-down" style="font-size: smaller;"></span>
-                                            </a>
-                                        </td>
-                                        <td>{{ user_policy.Description }}</td>
-                                        <td>{{ user_policy.DefaultVersion }}</td>
-                                        <td>{{ user_policy.AttachDate }}</td>
-                                    </tr>
-                                {% endfor %}
-                            {% else %}
-                                <h4>No policies associated with this user</h4>
-                            {% endif %}
-                    </tbody>
-                </table>
+                {% if data.user_policies %}
+                    <table class="wf-table-horizontal datatable">
+                        <thead>
+                            <tr>
+                                <th>Policy Name</th>
+                                <th>Policy Type</th>
+                                <th>Description</th>
+                                <th>Default Version</th>
+                                <th>Attach Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user_policy in data.user_policies %}
+                                <tr>
+                                    <td>
+                                        <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram policy name'], 'value':'{{ user_policy.PolicyName }}' }], 0, {{ container.id }}, null, false);">
+                                            {{ user_policy.PolicyName }}
+                                            &nbsp;
+                                            <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram policy type'], 'value':'{{ user_policy.PolicyType }}' }], 0, {{ container.id }}, null, false);">
+                                            {{ user_policy.PolicyType }}
+                                            &nbsp;
+                                            <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                                        </a>
+                                    </td>
+                                    <td>{{ user_policy.Description }}</td>
+                                    <td>{{ user_policy.DefaultVersion }}</td>
+                                    <td>{{ user_policy.AttachDate }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <h4 class="wf-h4-style">No policies associated with this user</h4>
+                {% endif %}
             </div>
         {% endfor %}
     {% endif %}

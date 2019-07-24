@@ -109,17 +109,17 @@
                 <h4 class="wf-h4-style">User Info</h4>
 
                 <!--Default View-->
-                <table class="wf-table-horizontal datatable">
-                    <thead>
-                        <tr>
-                            <th>User Name</th>
-                            <th>Display Name</th>
-                            <th>Join Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            {% if data.users %}
-                                {% for user in data.users %}
+                {% if data.users %}
+                    <table class="wf-table-horizontal datatable">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Display Name</th>
+                                <th>Join Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in data.users %}
                                 <tr>
                                     <td>
                                         <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram user name'], 'value':'{{ user.UserName }}' }], 0, {{ container.id }}, null, false);">
@@ -137,31 +137,31 @@
                                     </td>
                                     <td>{{ user.JoinDate }}</td>
                                 </tr>
-                                {% endfor %}
-                            {% else %}
-                                <h4>No users associated with this group</h4>
-                            {% endif %}
-                    </tbody>
-                </table>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <h4 class="wf-h4-style">No users associated with this group</h4>
+                {% endif %}
             </div>
             <br>
             <div class="results">
                 <h4 class="wf-h4-style">Policy Info</h4>
 
                 <!--Default View-->
-                <table class="wf-table-horizontal datatable">
-                    <thead>
-                        <tr>
-                            <th>Policy Name</th>
-                            <th>Policy Type</th>
-                            <th>Attach Date</th>
-                            <th>Default Version</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            {% if data.policies %}
-                                {% for policy in data.policies %}
+                {% if data.policies %}
+                    <table class="wf-table-horizontal datatable">
+                        <thead>
+                            <tr>
+                                <th>Policy Name</th>
+                                <th>Policy Type</th>
+                                <th>Attach Date</th>
+                                <th>Default Version</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for policy in data.policies %}
                                 <tr>
                                     <td>
                                         <a href="javascript:;" onclick="context_menu(this, [{'contains': ['alibabaram policy name'], 'value':'{{ policy.PolicyName }}' }], 0, {{ container.id }}, null, false);">
@@ -181,12 +181,12 @@
                                     <td>{{ policy.DefaultVersion }}</td>
                                     <td>{{ policy.Description }}</td>
                                 </tr>
-                                {% endfor %}
-                            {% else %}
-                                <h4>No policies associated with this group</h4>
-                            {% endif %}
-                    </tbody>
-                </table>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <h4 class="wf-h4-style">No policies associated with this group</h4>
+                {% endif %}
             </div>
         {% endfor %}
     {% endif %}
