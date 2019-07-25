@@ -1090,7 +1090,7 @@
         {
             "action": "describe user",
             "identifier": "describe_user",
-            "description": "Fetch the user details and the details of the associated user groups, and user policies",
+            "description": "Fetch the user details, details of the associated user groups, and user policies",
             "type": "investigate",
             "read_only": true,
             "parameters": {
