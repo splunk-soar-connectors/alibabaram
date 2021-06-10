@@ -9,12 +9,16 @@
     "product_name": "Alibaba Resource Access Management",
     "product_version_regex": ".*",
     "publisher": "Splunk",
-    "license": "Copyright (c) 2019 Splunk Inc.",
-    "app_version": "1.0.5",
+    "license": "Copyright (c) 2019-2021 Splunk Inc.",
+    "app_version": "2.0.0",
     "utctime_updated": "2020-11-23T08:12:40.000000Z",
     "package_name": "phantom_alibabaram",
-    "main_module": "alibabaram_connector.pyc",
-    "min_phantom_version": "4.2.7532",
+    "main_module": "alibabaram_connector.py",
+    "min_phantom_version": "4.9.39220",
+    "latest_tested_versions": [
+        "Alibaba RAM Cloud, 2021 on 06/10/2021"
+    ], 
+    "python_version": "3",
     "app_wizard_version": "1.0.0",
     "pip_dependencies": {
         "wheel": [
