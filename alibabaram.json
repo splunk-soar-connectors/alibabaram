@@ -17,7 +17,7 @@
     "min_phantom_version": "4.9.39220",
     "latest_tested_versions": [
         "Alibaba RAM Cloud, 2021 on 06/10/2021"
-    ], 
+    ],
     "python_version": "3",
     "app_wizard_version": "1.0.0",
     "pip_dependencies": {
@@ -100,7 +100,6 @@
                 "limit": {
                     "description": "Maximum number of RAM users to be fetched",
                     "data_type": "numeric",
-                    "required": false,
                     "order": 0
                 }
             },
@@ -224,7 +223,6 @@
                 "limit": {
                     "description": "Maximum number of RAM roles to be fetched",
                     "data_type": "numeric",
-                    "required": false,
                     "order": 0
                 }
             },
@@ -293,6 +291,16 @@
                     "column_order": 1
                 },
                 {
+                    "data_path": "action_result.data.*.UpdateDate",
+                    "data_type": "string",
+                    "example_value": "2019-07-19T04:32:18Z"
+                },
+                {
+                    "data_path": "action_result.data.*.MaxSessionDuration",
+                    "data_type": "numeric",
+                    "example_value": 3600
+                },
+                {
                     "data_path": "action_result.summary.total_roles",
                     "data_type": "numeric",
                     "example_values": [
@@ -336,7 +344,6 @@
                 "limit": {
                     "description": "Maximum number of RAM user groups to be fetched",
                     "data_type": "numeric",
-                    "required": false,
                     "order": 0
                 }
             },
@@ -351,7 +358,10 @@
                 },
                 {
                     "data_path": "action_result.parameter.limit",
-                    "data_type": "numeric"
+                    "data_type": "numeric",
+                    "example_values": [
+                        100
+                    ]
                 },
                 {
                     "data_path": "action_result.data.*.Comments",
@@ -391,6 +401,11 @@
                     ],
                     "column_name": "Update Date",
                     "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.GroupId",
+                    "data_type": "string",
+                    "example_value": "g-f8dd2fad4c440cd9"
                 },
                 {
                     "data_path": "action_result.summary.total_groups",
@@ -436,7 +451,6 @@
                 "limit": {
                     "description": "Maximum number of RAM policies to be fetched",
                     "data_type": "numeric",
-                    "required": false,
                     "order": 0
                 }
             },
@@ -792,7 +806,6 @@
                     "contains": [
                         "alibabaram user name"
                     ],
-                    "required": false,
                     "order": 2
                 },
                 "group_name": {
@@ -802,7 +815,6 @@
                     "contains": [
                         "alibabaram group name"
                     ],
-                    "required": false,
                     "order": 3
                 },
                 "role_name": {
@@ -812,7 +824,6 @@
                     "contains": [
                         "alibabaram role name"
                     ],
-                    "required": false,
                     "order": 4
                 }
             },
@@ -961,7 +972,6 @@
                     "contains": [
                         "alibabaram user name"
                     ],
-                    "required": false,
                     "order": 2
                 },
                 "group_name": {
@@ -971,7 +981,6 @@
                     "contains": [
                         "alibabaram group name"
                     ],
-                    "required": false,
                     "order": 3
                 },
                 "role_name": {
@@ -981,7 +990,6 @@
                     "contains": [
                         "alibabaram role name"
                     ],
-                    "required": false,
                     "order": 4
                 }
             },
@@ -1557,7 +1565,6 @@
                     "contains": [
                         "alibabaram user name"
                     ],
-                    "required": false,
                     "order": 0
                 },
                 "group_name": {
@@ -1567,7 +1574,6 @@
                     "contains": [
                         "alibabaram group name"
                     ],
-                    "required": false,
                     "order": 1
                 },
                 "policies": {
@@ -1845,7 +1851,7 @@
             "action": "update user",
             "identifier": "update_user",
             "description": "Updates the basic information of the RAM user",
-            "verbose": "As per the API document of Alibaba RAM, the parameter new_username is not mandatory for running the action update user and hence, it has been kept optional in the action. But, the API used here still gives an error mentioning that new_username is mandatory if we do not provide the value for new_username. The mobile_number parameter should follow the format <International Area Code>-<Mobile Phone Number> e.g. 86-18600001234",
+            "verbose": "As per the API document of Alibaba RAM, the parameter new_username is not mandatory for running the action update user and hence, it has been kept optional in the action. But, the API used here still gives an error mentioning that new_username is mandatory if we do not provide the value for new_username. The mobile_number parameter should follow the format <International Area Code>-<Mobile Phone Number> e.g. 86-18600001234.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -1862,7 +1868,6 @@
                 "comment": {
                     "description": "The comment for updating the RAM user details",
                     "data_type": "string",
-                    "required": false,
                     "order": 1
                 },
                 "email": {
@@ -1872,13 +1877,11 @@
                     "contains": [
                         "email"
                     ],
-                    "required": false,
                     "order": 2
                 },
                 "mobile_number": {
                     "description": "Updated mobile number of the RAM user",
                     "data_type": "string",
-                    "required": false,
                     "order": 3
                 },
                 "new_username": {
@@ -1888,7 +1891,6 @@
                     "contains": [
                         "alibabaram user name"
                     ],
-                    "required": false,
                     "order": 4
                 },
                 "display_name": {
@@ -1898,7 +1900,6 @@
                     "contains": [
                         "alibabaram user display name"
                     ],
-                    "required": false,
                     "order": 5
                 }
             },

@@ -565,6 +565,8 @@ class AlibabaRamConnector(BaseConnector):
             try:
                 response = self._client.do_action_with_exception(ram_request)
             except Exception as e:
+                self.debug_print("Error occurred while removing user: {0} from the group: {1}. Error: {2}".format(
+                            user_name, group.get(ALIBABARAM_GROUP_NAME), str(e)))
                 action_result.set_status(
                         phantom.APP_ERROR, "Error occurred while removing user: {0} from the group: {1}".format(
                             user_name, group.get(ALIBABARAM_GROUP_NAME)))
@@ -614,6 +616,7 @@ class AlibabaRamConnector(BaseConnector):
             try:
                 response = self._client.do_action_with_exception(ram_request)
             except Exception as e:
+                self.debug_print("Error occurred while adding user: {0} to the group: {1}. Error: {2}".format(user_name, group, str(e)))
                 return action_result.set_status(phantom.APP_ERROR, "Error occurred while adding user: {0} to the group: {1}".format(user_name, group))
 
             if not response:
@@ -911,7 +914,7 @@ if __name__ == '__main__':
         try:
             login_url = AlibabaRamConnector._get_phantom_base_url() + '/login'
 
-            print ("Accessing the Login page")
+            print("Accessing the Login page")
             r = requests.get(login_url, verify=False)
             csrftoken = r.cookies['csrftoken']
 
@@ -924,7 +927,7 @@ if __name__ == '__main__':
             headers['Cookie'] = 'csrftoken=' + csrftoken
             headers['Referer'] = login_url
 
-            print ("Logging into Platform to get the session id")
+            print("Logging into Platform to get the session id")
             r2 = requests.post(login_url, verify=False, data=data, headers=headers)
             session_id = r2.cookies['sessionid']
         except Exception as e:
