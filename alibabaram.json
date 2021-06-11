@@ -270,6 +270,11 @@
                     "column_order": 2
                 },
                 {
+                    "data_path": "action_result.data.*.MaxSessionDuration",
+                    "data_type": "numeric",
+                    "example_value": 3600
+                },
+                {
                     "data_path": "action_result.data.*.RoleId",
                     "data_type": "string",
                     "example_values": [
@@ -294,11 +299,6 @@
                     "data_path": "action_result.data.*.UpdateDate",
                     "data_type": "string",
                     "example_value": "2019-07-19T04:32:18Z"
-                },
-                {
-                    "data_path": "action_result.data.*.MaxSessionDuration",
-                    "data_type": "numeric",
-                    "example_value": 3600
                 },
                 {
                     "data_path": "action_result.summary.total_roles",
@@ -382,6 +382,11 @@
                     "column_order": 1
                 },
                 {
+                    "data_path": "action_result.data.*.GroupId",
+                    "data_type": "string",
+                    "example_value": "g-f8dd2fad4c440cd9"
+                },
+                {
                     "data_path": "action_result.data.*.GroupName",
                     "data_type": "string",
                     "example_values": [
@@ -401,11 +406,6 @@
                     ],
                     "column_name": "Update Date",
                     "column_order": 2
-                },
-                {
-                    "data_path": "action_result.data.*.GroupId",
-                    "data_type": "string",
-                    "example_value": "g-f8dd2fad4c440cd9"
                 },
                 {
                     "data_path": "action_result.summary.total_groups",
