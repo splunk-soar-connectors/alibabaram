@@ -16,7 +16,7 @@
     "main_module": "alibabaram_connector.py",
     "min_phantom_version": "4.9.39220",
     "latest_tested_versions": [
-        "Alibaba RAM Cloud, 2021 on 06/18/2021"
+        "Alibaba RAM Cloud, 2021 on 18 June, 2021"
     ],
     "python_version": "3",
     "app_wizard_version": "1.0.0",
