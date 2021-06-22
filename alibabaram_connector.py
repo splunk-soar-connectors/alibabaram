@@ -481,7 +481,7 @@ class AlibabaRamConnector(BaseConnector):
                     return action_result.get_status()
 
         if group_name:
-            # 4. List all the current policies of the group
+            # 3. List all the current policies of the group
             try:
                 ram_request = ListPoliciesForGroupRequest()
                 ram_request.set_GroupName(group_name)
@@ -496,7 +496,7 @@ class AlibabaRamConnector(BaseConnector):
             if group_policies is None:
                 return action_result.get_status()
 
-            # 5. Remove the existing policies of the group
+            # 4. Remove the existing policies of the group
             for policy in group_policies:
                 result = self._attach_detach_policy(
                                 policy.get(ALIBABARAM_POLICY_NAME), policy.get(ALIBABARAM_POLICY_TYPE), user_name, ALIBABARAM_JSON_GROUP_NAME, action_result, False)
@@ -504,7 +504,7 @@ class AlibabaRamConnector(BaseConnector):
                 if not result:
                     return action_result.get_status()
 
-            # 6. Add the provided policies to the group
+            # 5. Add the provided policies to the group
             for policy in policies_list:
                 result = self._attach_detach_policy(policy, policy_type, group_name, ALIBABARAM_JSON_GROUP_NAME, action_result)
 
@@ -601,7 +601,7 @@ class AlibabaRamConnector(BaseConnector):
         if result is None:
             return action_result.get_status()
 
-        # 3. Add the user to the provided groups
+        # 2. Add the user to the provided groups
         for group in groups_list:
             try:
                 ram_request = AddUserToGroupRequest()

@@ -772,7 +772,7 @@
             "identifier": "attach_policy",
             "undo": "detach policy",
             "description": "Attach a policy to the provided user, group, or role",
-            "verbose": "User can either attach the System or the Custom policies of the required entity one at a time but not both together. If the user provides user_name, group_name, and role_name parameters, the policies will be attached for all three entities, first it will attach for user_name then group_name followed by role_name. If the action fails at an intermediate stage, the policies attachment process until that point of time cannot be undone. i.e. if the policy attachment process is successful for the given user_name, group_name but fails while attaching policies for the role_name, then, policies already attached for the users in the earlier steps cannot be undone.",
+            "verbose": "User can either attach the System or the Custom policies of the required entity one at a time but not both together. If the user provides user_name, group_name, and role_name parameters, the policies will be attached for all three entities, first it will attach for user_name then group_name followed by role_name. If the action fails at an intermediate stage, the policies attachment process until that point of time cannot be undone. i.e. if the policy attachment process is successful for the given user_name, group_name but fails while attaching policies for the role_name, then, policies already attached to the user and the group, in the earlier steps cannot be undone.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -939,7 +939,7 @@
             "identifier": "detach_policy",
             "undo": "attach policy",
             "description": "Detach a policy from the provided user, group, or role",
-            "verbose": "User can either detach the System or the Custom policies of the required entity one at a time but not both together. If the user provides user_name, group_name, and role_name parameters, the policies will be detached for all three entities, first it will detach for user_name then group_name followed by role_name. If the action fails at an intermediate stage, the policies detachment process until that point of time cannot be undone. i.e. if the policy detachment process is successful for the given user_name, group_name but fails while detaching policies for the role_name, then, policies already detached for the users in the earlier steps cannot be undone.",
+            "verbose": "User can either detach the System or the Custom policies of the required entity one at a time but not both together. If the user provides user_name, group_name, and role_name parameters, the policies will be detached for all three entities, first it will detach for user_name then group_name followed by role_name. If the action fails at an intermediate stage, the policies detachment process until that point of time cannot be undone. i.e. if the policy detachment process is successful for the given user_name, group_name but fails while detaching policies for the role_name, then, policies already detached from the user and the group, in the earlier steps cannot be undone.",
             "type": "generic",
             "read_only": false,
             "parameters": {
