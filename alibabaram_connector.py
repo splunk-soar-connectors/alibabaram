@@ -499,7 +499,7 @@ class AlibabaRamConnector(BaseConnector):
             # 4. Remove the existing policies of the group
             for policy in group_policies:
                 result = self._attach_detach_policy(
-                                policy.get(ALIBABARAM_POLICY_NAME), policy.get(ALIBABARAM_POLICY_TYPE), user_name, ALIBABARAM_JSON_GROUP_NAME, action_result, False)
+                                policy.get(ALIBABARAM_POLICY_NAME), policy.get(ALIBABARAM_POLICY_TYPE), group_name, ALIBABARAM_JSON_GROUP_NAME, action_result, False)
 
                 if not result:
                     return action_result.get_status()
