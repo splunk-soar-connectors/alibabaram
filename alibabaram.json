@@ -24,11 +24,11 @@
         "wheel": [
             {
                 "module": "aliyun-python-sdk-core",
-                "input_file": "wheels/aliyun_python_sdk_core-2.13.5-cp27-none-any.whl"
+                "input_file": "wheels/aliyun_python_sdk_core-2.13.35-py3-none-any.whl"
             },
             {
                 "module": "aliyun-python-sdk-ram",
-                "input_file": "wheels/aliyun_python_sdk_ram-3.1.0-cp27-none-any.whl"
+                "input_file": "wheels/aliyun_python_sdk_ram-3.2.0-py3-none-any.whl"
             },
             {
                 "module": "jmespath",
