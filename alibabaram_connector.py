@@ -1,5 +1,5 @@
 # File: alibabaram_connector.py
-# Copyright (c) 2019 Splunk Inc.
+# Copyright (c) 2019-2021 Splunk Inc.
 #
 # SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
 # without a valid written license from Splunk Inc. is PROHIBITED.
@@ -481,7 +481,7 @@ class AlibabaRamConnector(BaseConnector):
                     return action_result.get_status()
 
         if group_name:
-            # 4. List all the current policies of the group
+            # 3. List all the current policies of the group
             try:
                 ram_request = ListPoliciesForGroupRequest()
                 ram_request.set_GroupName(group_name)
@@ -496,15 +496,15 @@ class AlibabaRamConnector(BaseConnector):
             if group_policies is None:
                 return action_result.get_status()
 
-            # 5. Remove the existing policies of the group
+            # 4. Remove the existing policies of the group
             for policy in group_policies:
                 result = self._attach_detach_policy(
-                                policy.get(ALIBABARAM_POLICY_NAME), policy.get(ALIBABARAM_POLICY_TYPE), user_name, ALIBABARAM_JSON_GROUP_NAME, action_result, False)
+                                policy.get(ALIBABARAM_POLICY_NAME), policy.get(ALIBABARAM_POLICY_TYPE), group_name, ALIBABARAM_JSON_GROUP_NAME, action_result, False)
 
                 if not result:
                     return action_result.get_status()
 
-            # 6. Add the provided policies to the group
+            # 5. Add the provided policies to the group
             for policy in policies_list:
                 result = self._attach_detach_policy(policy, policy_type, group_name, ALIBABARAM_JSON_GROUP_NAME, action_result)
 
@@ -565,6 +565,8 @@ class AlibabaRamConnector(BaseConnector):
             try:
                 response = self._client.do_action_with_exception(ram_request)
             except Exception as e:
+                self.debug_print("Error occurred while removing user: {0} from the group: {1}. Error: {2}".format(
+                            user_name, group.get(ALIBABARAM_GROUP_NAME), str(e)))
                 action_result.set_status(
                         phantom.APP_ERROR, "Error occurred while removing user: {0} from the group: {1}".format(
                             user_name, group.get(ALIBABARAM_GROUP_NAME)))
@@ -599,7 +601,7 @@ class AlibabaRamConnector(BaseConnector):
         if result is None:
             return action_result.get_status()
 
-        # 3. Add the user to the provided groups
+        # 2. Add the user to the provided groups
         for group in groups_list:
             try:
                 ram_request = AddUserToGroupRequest()
@@ -614,6 +616,7 @@ class AlibabaRamConnector(BaseConnector):
             try:
                 response = self._client.do_action_with_exception(ram_request)
             except Exception as e:
+                self.debug_print("Error occurred while adding user: {0} to the group: {1}. Error: {2}".format(user_name, group, str(e)))
                 return action_result.set_status(phantom.APP_ERROR, "Error occurred while adding user: {0} to the group: {1}".format(user_name, group))
 
             if not response:
@@ -848,7 +851,7 @@ class AlibabaRamConnector(BaseConnector):
             'update_user': self._handle_update_user
         }
 
-        if action_id in action_mapping.keys():
+        if action_id in list(action_mapping.keys()):
             action_function = action_mapping[action_id]
             action_execution_status = action_function(param)
 
@@ -911,7 +914,7 @@ if __name__ == '__main__':
         try:
             login_url = AlibabaRamConnector._get_phantom_base_url() + '/login'
 
-            print ("Accessing the Login page")
+            print("Accessing the Login page")
             r = requests.get(login_url, verify=False)
             csrftoken = r.cookies['csrftoken']
 
@@ -924,11 +927,11 @@ if __name__ == '__main__':
             headers['Cookie'] = 'csrftoken=' + csrftoken
             headers['Referer'] = login_url
 
-            print ("Logging into Platform to get the session id")
+            print("Logging into Platform to get the session id")
             r2 = requests.post(login_url, verify=False, data=data, headers=headers)
             session_id = r2.cookies['sessionid']
         except Exception as e:
-            print ("Unable to get session id from the platform. Error: " + str(e))
+            print("Unable to get session id from the platform. Error: " + str(e))
             exit(1)
 
     with open(args.input_test_json) as f:
@@ -944,6 +947,6 @@ if __name__ == '__main__':
             connector._set_csrf_info(csrftoken, headers['Referer'])
 
         ret_val = connector._handle_action(json.dumps(in_json), None)
-        print (json.dumps(json.loads(ret_val), indent=4))
+        print(json.dumps(json.loads(ret_val), indent=4))
 
     exit(0)

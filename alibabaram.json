@@ -9,22 +9,26 @@
     "product_name": "Alibaba Resource Access Management",
     "product_version_regex": ".*",
     "publisher": "Splunk",
-    "license": "Copyright (c) 2019 Splunk Inc.",
-    "app_version": "1.0.3",
-    "utctime_updated": "2019-07-25T21:06:16.000000Z",
+    "license": "Copyright (c) 2019-2021 Splunk Inc.",
+    "app_version": "2.0.3",
+    "utctime_updated": "2021-06-28T05:11:13.000000Z",
     "package_name": "phantom_alibabaram",
-    "main_module": "alibabaram_connector.pyc",
-    "min_phantom_version": "4.2.7532",
+    "main_module": "alibabaram_connector.py",
+    "min_phantom_version": "4.9.39220",
+    "latest_tested_versions": [
+        "Alibaba RAM Cloud, 2021 on 18 June, 2021"
+    ],
+    "python_version": "3",
     "app_wizard_version": "1.0.0",
     "pip_dependencies": {
         "wheel": [
             {
                 "module": "aliyun-python-sdk-core",
-                "input_file": "wheels/aliyun_python_sdk_core-2.13.5-cp27-none-any.whl"
+                "input_file": "wheels/aliyun_python_sdk_core-2.13.35-py3-none-any.whl"
             },
             {
                 "module": "aliyun-python-sdk-ram",
-                "input_file": "wheels/aliyun_python_sdk_ram-3.1.0-cp27-none-any.whl"
+                "input_file": "wheels/aliyun_python_sdk_ram-3.2.0-py3-none-any.whl"
             },
             {
                 "module": "jmespath",
@@ -96,7 +100,6 @@
                 "limit": {
                     "description": "Maximum number of RAM users to be fetched",
                     "data_type": "numeric",
-                    "required": false,
                     "order": 0
                 }
             },
@@ -220,7 +223,6 @@
                 "limit": {
                     "description": "Maximum number of RAM roles to be fetched",
                     "data_type": "numeric",
-                    "required": false,
                     "order": 0
                 }
             },
@@ -268,6 +270,11 @@
                     "column_order": 2
                 },
                 {
+                    "data_path": "action_result.data.*.MaxSessionDuration",
+                    "data_type": "numeric",
+                    "example_value": 3600
+                },
+                {
                     "data_path": "action_result.data.*.RoleId",
                     "data_type": "string",
                     "example_values": [
@@ -287,6 +294,11 @@
                     ],
                     "column_name": "Role Name",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.UpdateDate",
+                    "data_type": "string",
+                    "example_value": "2019-07-19T04:32:18Z"
                 },
                 {
                     "data_path": "action_result.summary.total_roles",
@@ -332,7 +344,6 @@
                 "limit": {
                     "description": "Maximum number of RAM user groups to be fetched",
                     "data_type": "numeric",
-                    "required": false,
                     "order": 0
                 }
             },
@@ -347,7 +358,10 @@
                 },
                 {
                     "data_path": "action_result.parameter.limit",
-                    "data_type": "numeric"
+                    "data_type": "numeric",
+                    "example_values": [
+                        100
+                    ]
                 },
                 {
                     "data_path": "action_result.data.*.Comments",
@@ -366,6 +380,11 @@
                     ],
                     "column_name": "Create Date",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.GroupId",
+                    "data_type": "string",
+                    "example_value": "g-f8dd2fad4c440cd9"
                 },
                 {
                     "data_path": "action_result.data.*.GroupName",
@@ -432,7 +451,6 @@
                 "limit": {
                     "description": "Maximum number of RAM policies to be fetched",
                     "data_type": "numeric",
-                    "required": false,
                     "order": 0
                 }
             },
@@ -754,6 +772,7 @@
             "identifier": "attach_policy",
             "undo": "detach policy",
             "description": "Attach a policy to the provided user, group, or role",
+            "verbose": "User can either attach the System or the Custom policies of the required entity one at a time but not both together. If the user provides user_name, group_name, and role_name parameters, the policies will be attached for all three entities, first it will attach for user_name then group_name followed by role_name. If the action fails at an intermediate stage, the policies attachment process until that point of time cannot be undone. i.e. if the policy attachment process is successful for the given user_name, group_name but fails while attaching policies for the role_name, then, policies already attached to the user and the group, in the earlier steps cannot be undone.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -788,7 +807,6 @@
                     "contains": [
                         "alibabaram user name"
                     ],
-                    "required": false,
                     "order": 2
                 },
                 "group_name": {
@@ -798,7 +816,6 @@
                     "contains": [
                         "alibabaram group name"
                     ],
-                    "required": false,
                     "order": 3
                 },
                 "role_name": {
@@ -808,7 +825,6 @@
                     "contains": [
                         "alibabaram role name"
                     ],
-                    "required": false,
                     "order": 4
                 }
             },
@@ -923,6 +939,7 @@
             "identifier": "detach_policy",
             "undo": "attach policy",
             "description": "Detach a policy from the provided user, group, or role",
+            "verbose": "User can either detach the System or the Custom policies of the required entity one at a time but not both together. If the user provides user_name, group_name, and role_name parameters, the policies will be detached for all three entities, first it will detach for user_name then group_name followed by role_name. If the action fails at an intermediate stage, the policies detachment process until that point of time cannot be undone. i.e. if the policy detachment process is successful for the given user_name, group_name but fails while detaching policies for the role_name, then, policies already detached from the user and the group, in the earlier steps cannot be undone.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -957,7 +974,6 @@
                     "contains": [
                         "alibabaram user name"
                     ],
-                    "required": false,
                     "order": 2
                 },
                 "group_name": {
@@ -967,7 +983,6 @@
                     "contains": [
                         "alibabaram group name"
                     ],
-                    "required": false,
                     "order": 3
                 },
                 "role_name": {
@@ -977,7 +992,6 @@
                     "contains": [
                         "alibabaram role name"
                     ],
-                    "required": false,
                     "order": 4
                 }
             },
@@ -1553,7 +1567,6 @@
                     "contains": [
                         "alibabaram user name"
                     ],
-                    "required": false,
                     "order": 0
                 },
                 "group_name": {
@@ -1563,7 +1576,6 @@
                     "contains": [
                         "alibabaram group name"
                     ],
-                    "required": false,
                     "order": 1
                 },
                 "policies": {
@@ -1841,7 +1853,7 @@
             "action": "update user",
             "identifier": "update_user",
             "description": "Updates the basic information of the RAM user",
-            "verbose": "As per the API document of Alibaba RAM, the parameter new_username is not mandatory for running the action update user and hence, it has been kept optional in the action. But, the API used here still gives an error mentioning that new_username is mandatory if we do not provide the value for new_username. The mobile_number parameter should follow the format <International Area Code>-<Mobile Phone Number> e.g. 86-18600001234",
+            "verbose": "As per the API document of Alibaba RAM, the parameter new_username is not mandatory for running the action update user and hence, it has been kept optional in the action. But, the API used here still gives an error mentioning that new_username is mandatory if we do not provide the value for new_username. The mobile_number parameter should follow the format <International Area Code>-<Mobile Phone Number> e.g. 86-18600001234.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -1858,7 +1870,6 @@
                 "comment": {
                     "description": "The comment for updating the RAM user details",
                     "data_type": "string",
-                    "required": false,
                     "order": 1
                 },
                 "email": {
@@ -1868,13 +1879,11 @@
                     "contains": [
                         "email"
                     ],
-                    "required": false,
                     "order": 2
                 },
                 "mobile_number": {
                     "description": "Updated mobile number of the RAM user",
                     "data_type": "string",
-                    "required": false,
                     "order": 3
                 },
                 "new_username": {
@@ -1884,7 +1893,6 @@
                     "contains": [
                         "alibabaram user name"
                     ],
-                    "required": false,
                     "order": 4
                 },
                 "display_name": {
@@ -1894,7 +1902,6 @@
                     "contains": [
                         "alibabaram user display name"
                     ],
-                    "required": false,
                     "order": 5
                 }
             },
