@@ -19,6 +19,7 @@
         "Alibaba RAM Cloud, 2021 on 18 June, 2021"
     ],
     "python_version": "3",
+    "fips_compliant": true,
     "app_wizard_version": "1.0.0",
     "pip_dependencies": {
         "wheel": [
