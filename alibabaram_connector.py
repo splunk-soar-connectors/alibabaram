@@ -77,7 +77,8 @@ class AlibabaRamConnector(BaseConnector):
 
                 response = self._client.do_action_with_exception(ram_request)
             except Exception as e:
-                action_result.set_status(phantom.APP_ERROR, 'Error occurred while fetching the list of all the RAM {0}. Error: {1}'.format(item_name, str(e)))
+                action_result.set_status(phantom.APP_ERROR,
+                    'Error occurred while fetching the list of all the RAM {0}. Error: {1}'.format(item_name, str(e)))
                 return None
 
             try:
@@ -104,7 +105,8 @@ class AlibabaRamConnector(BaseConnector):
         action_result = self.add_action_result(ActionResult(dict(param)))
 
         if not self._client:
-            return action_result.set_status(phantom.APP_ERROR, 'Client could not be initialized. Please check credentials and region in the asset configuration parameters.')
+            return action_result.set_status(phantom.APP_ERROR,
+                'Client could not be initialized. Please check credentials and region in the asset configuration parameters.')
 
         self.save_progress("Connecting the endpoint for fetching all the users")
         try:
@@ -114,7 +116,8 @@ class AlibabaRamConnector(BaseConnector):
             self._client.do_action_with_exception(ram_request)
         except Exception as e:
             self.save_progress("Test Connectivity Failed")
-            return action_result.set_status(phantom.APP_ERROR, 'Error occurred while fetching the list of all the users. Error: {0}'.format(str(e)))
+            return action_result.set_status(phantom.APP_ERROR,
+                'Error occurred while fetching the list of all the users. Error: {0}'.format(str(e)))
 
         self.save_progress("Test Connectivity Passed")
         return action_result.set_status(phantom.APP_SUCCESS)
@@ -133,7 +136,8 @@ class AlibabaRamConnector(BaseConnector):
             ram_request = ListUsersRequest()
             ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, 'Error occurred while creating request for fetching list of all the RAM users. Error: {0}'.format(str(e)))
+            return action_result.set_status(phantom.APP_ERROR,
+                'Error occurred while creating request for fetching list of all the RAM users. Error: {0}'.format(str(e)))
 
         users = self._paginator(ALIBABARAM_JSON_USERS, ram_request, limit, action_result)
 
@@ -162,7 +166,8 @@ class AlibabaRamConnector(BaseConnector):
             ram_request = ListRolesRequest()
             ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, 'Error occurred while creating request for fetching list of all the RAM roles. Error: {0}'.format(str(e)))
+            return action_result.set_status(phantom.APP_ERROR,
+                'Error occurred while creating request for fetching list of all the RAM roles. Error: {0}'.format(str(e)))
 
         roles = self._paginator(ALIBABARAM_JSON_ROLES, ram_request, limit, action_result)
 
@@ -182,7 +187,8 @@ class AlibabaRamConnector(BaseConnector):
             ram_request = ListGroupsRequest()
             ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
         except Exception as e:
-            action_result.set_status(phantom.APP_ERROR, 'Error occurred while creating request for fetching list of all the RAM groups. Error: {0}'.format(str(e)))
+            action_result.set_status(phantom.APP_ERROR,
+                'Error occurred while creating request for fetching list of all the RAM groups. Error: {0}'.format(str(e)))
             return None
 
         return self._paginator(ALIBABARAM_JSON_GROUPS, ram_request, limit, action_result)
@@ -215,7 +221,8 @@ class AlibabaRamConnector(BaseConnector):
             ram_request = ListPoliciesRequest()
             ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
         except Exception as e:
-            action_result.set_status(phantom.APP_ERROR, 'Error occurred while creating request for fetching list of all the RAM policies. Error: {0}'.format(str(e)))
+            action_result.set_status(phantom.APP_ERROR,
+                'Error occurred while creating request for fetching list of all the RAM policies. Error: {0}'.format(str(e)))
             return None
 
         return self._paginator(ALIBABARAM_JSON_POLICIES, ram_request, limit, action_result)
@@ -258,12 +265,15 @@ class AlibabaRamConnector(BaseConnector):
             ram_request.set_GroupName(group_name)
             response = self._client.do_action_with_exception(ram_request)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, "Error occurred while adding user: {0} to the group: {1}. Error: {2}".format(user_name, group_name, str(e)))
+            return action_result.set_status(phantom.APP_ERROR,
+                "Error occurred while adding user: {0} to the group: {1}. Error: {2}".format(user_name, group_name, str(e)))
 
         if not response:
-            return action_result.set_status(phantom.APP_ERROR, "Unknown error occurred while adding user: {0} to the group: {1}".format(user_name, group_name))
+            return action_result.set_status(phantom.APP_ERROR,
+                "Unknown error occurred while adding user: {0} to the group: {1}".format(user_name, group_name))
 
-        return action_result.set_status(phantom.APP_SUCCESS, "User: {0} is successfully added to the group: {1}".format(user_name, group_name))
+        return action_result.set_status(phantom.APP_SUCCESS,
+            "User: {0} is successfully added to the group: {1}".format(user_name, group_name))
 
     def _handle_remove_user(self, param):
 
@@ -280,12 +290,15 @@ class AlibabaRamConnector(BaseConnector):
             ram_request.set_GroupName(group_name)
             response = self._client.do_action_with_exception(ram_request)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, "Error occurred while removing user: {0} from the group: {1}. Error: {2}".format(user_name, group_name, str(e)))
+            return action_result.set_status(phantom.APP_ERROR,
+                "Error occurred while removing user: {0} from the group: {1}. Error: {2}".format(user_name, group_name, str(e)))
 
         if not response:
-            return action_result.set_status(phantom.APP_ERROR, "Unknown error occurred while removing user: {0} from the group: {1}".format(user_name, group_name))
+            return action_result.set_status(phantom.APP_ERROR,
+                "Unknown error occurred while removing user: {0} from the group: {1}".format(user_name, group_name))
 
-        return action_result.set_status(phantom.APP_SUCCESS, "User: {0} is successfully removed from the group: {1}".format(user_name, group_name))
+        return action_result.set_status(phantom.APP_SUCCESS,
+            "User: {0} is successfully removed from the group: {1}".format(user_name, group_name))
 
     def _attach_detach_policy(self, policy_name, policy_type, item, item_name, action_result, is_attach=True):
         try:
@@ -345,7 +358,8 @@ class AlibabaRamConnector(BaseConnector):
         policy_type = param.get(ALIBABARAM_JSON_POLICY_TYPE)
 
         if not (user_name or group_name or role_name):
-            return action_result.set_status(phantom.APP_ERROR, 'Please provide at least one of the user_name, group_name, or role_name parameters')
+            return action_result.set_status(phantom.APP_ERROR,
+                'Please provide at least one of the user_name, group_name, or role_name parameters')
 
         if user_name:
             result = self._attach_detach_policy(policy_name, policy_type, user_name, ALIBABARAM_JSON_USER_NAME, action_result)
@@ -365,7 +379,8 @@ class AlibabaRamConnector(BaseConnector):
             if not result:
                 return action_result.get_status()
 
-        return action_result.set_status(phantom.APP_SUCCESS, ALIBABARAM_ATTACH_POLICY_MSG.format(pol=policy_name, user=user_name, grp=group_name, role=role_name))
+        return action_result.set_status(phantom.APP_SUCCESS,
+            ALIBABARAM_ATTACH_POLICY_MSG.format(pol=policy_name, user=user_name, grp=group_name, role=role_name))
 
     def _handle_detach_policy(self, param):
 
@@ -380,7 +395,8 @@ class AlibabaRamConnector(BaseConnector):
         policy_type = param.get(ALIBABARAM_JSON_POLICY_TYPE)
 
         if not (user_name or group_name or role_name):
-            return action_result.set_status(phantom.APP_ERROR, 'Please provide at least one of the user_name, group_name, or role_name parameters')
+            return action_result.set_status(phantom.APP_ERROR,
+                'Please provide at least one of the user_name, group_name, or role_name parameters')
 
         if user_name:
             result = self._attach_detach_policy(policy_name, policy_type, user_name, ALIBABARAM_JSON_USER_NAME, action_result, False)
@@ -400,13 +416,15 @@ class AlibabaRamConnector(BaseConnector):
             if not result:
                 return action_result.get_status()
 
-        return action_result.set_status(phantom.APP_SUCCESS, ALIBABARAM_DETACH_POLICY_MSG.format(pol=policy_name, user=user_name, grp=group_name, role=role_name))
+        return action_result.set_status(phantom.APP_SUCCESS,
+            ALIBABARAM_DETACH_POLICY_MSG.format(pol=policy_name, user=user_name, grp=group_name, role=role_name))
 
     def _validate_policy_types(self, policies_list, policy_type, action_result):
         all_policies = self._list_all_policies(None, action_result)
 
         if all_policies is None:
-            action_result.set_status(phantom.APP_ERROR, "Error occurred while fetching all the policies for validating the type of the provided policies")
+            action_result.set_status(phantom.APP_ERROR,
+                "Error occurred while fetching all the policies for validating the type of the provided policies")
             return None
 
         count = 0
@@ -421,7 +439,8 @@ class AlibabaRamConnector(BaseConnector):
                 return False
 
         if count != len(policies_list):
-            action_result.set_status(phantom.APP_ERROR, "Please check the provided policies. One or more policies of the provided policy names do not exist on the server.")
+            action_result.set_status(phantom.APP_ERROR,
+                "Please check the provided policies. One or more policies of the provided policy names do not exist on the server.")
             return False
 
         return True
@@ -446,7 +465,8 @@ class AlibabaRamConnector(BaseConnector):
         # 2. Remove the existing policies of the user
         for policy in user_policies:
             result = self._attach_detach_policy(
-                            policy.get(ALIBABARAM_POLICY_NAME), policy.get(ALIBABARAM_POLICY_TYPE), user_name, ALIBABARAM_JSON_USER_NAME, action_result, False)
+                            policy.get(ALIBABARAM_POLICY_NAME),
+                            policy.get(ALIBABARAM_POLICY_TYPE), user_name, ALIBABARAM_JSON_USER_NAME, action_result, False)
 
             if not result:
                 return None
@@ -469,7 +489,8 @@ class AlibabaRamConnector(BaseConnector):
         policy_type = param.get(ALIBABARAM_JSON_POLICY_TYPE)
 
         if not (user_name or group_name):
-            return action_result.set_status(phantom.APP_ERROR, 'Please provide at least one of the user_name or group_name parameters')
+            return action_result.set_status(phantom.APP_ERROR,
+                'Please provide at least one of the user_name or group_name parameters')
 
         valid_policy_types = self._validate_policy_types(policies_list, policy_type, action_result)
 
@@ -509,7 +530,8 @@ class AlibabaRamConnector(BaseConnector):
             # 4. Remove the existing policies of the group
             for policy in group_policies:
                 result = self._attach_detach_policy(
-                                policy.get(ALIBABARAM_POLICY_NAME), policy.get(ALIBABARAM_POLICY_TYPE), group_name, ALIBABARAM_JSON_GROUP_NAME, action_result, False)
+                                policy.get(ALIBABARAM_POLICY_NAME),
+                                policy.get(ALIBABARAM_POLICY_TYPE), group_name, ALIBABARAM_JSON_GROUP_NAME, action_result, False)
 
                 if not result:
                     return action_result.get_status()
@@ -527,7 +549,8 @@ class AlibabaRamConnector(BaseConnector):
         all_groups = self._list_all_groups(None, action_result)
 
         if all_groups is None:
-            action_result.set_status(phantom.APP_ERROR, "Error occurred while fetching all the groups for validating the provided group names")
+            action_result.set_status(phantom.APP_ERROR,
+                "Error occurred while fetching all the groups for validating the provided group names")
             return None
 
         count = 0
@@ -537,7 +560,8 @@ class AlibabaRamConnector(BaseConnector):
                 count += 1
 
         if count != len(groups_list):
-            action_result.set_status(phantom.APP_ERROR, "Please check the provided groups. One or more groups of the provided group names do not exist on the server.")
+            action_result.set_status(phantom.APP_ERROR,
+                "Please check the provided groups. One or more groups of the provided group names do not exist on the server.")
             return False
 
         return True
@@ -569,7 +593,8 @@ class AlibabaRamConnector(BaseConnector):
             except Exception as e:
                 action_result.set_status(
                         phantom.APP_ERROR, ALIBABARAM_ERROR_ADD_REMOVE_GROUP.format(
-                            pr=ALIBABARAM_JSON_REMOVING, user='{0} {1}'.format(user_name, ALIBABARAM_JSON_FROM), group=group.get(ALIBABARAM_GROUP_NAME), error=str(e)))
+                            pr=ALIBABARAM_JSON_REMOVING, user='{0} {1}'.format(user_name, ALIBABARAM_JSON_FROM),
+                            group=group.get(ALIBABARAM_GROUP_NAME), error=str(e)))
                 return None
 
             try:
@@ -584,7 +609,9 @@ class AlibabaRamConnector(BaseConnector):
 
             if not response:
                 action_result.set_status(
-                        phantom.APP_ERROR, "Unknown error occurred while removing user: {0} from the group: {1}".format(user_name, group.get(ALIBABARAM_GROUP_NAME)))
+                        phantom.APP_ERROR,
+                        "Unknown error occurred while removing user: {0} from the group: {1}".format(user_name,
+                            group.get(ALIBABARAM_GROUP_NAME)))
                 return None
 
         return True
@@ -621,7 +648,8 @@ class AlibabaRamConnector(BaseConnector):
             except Exception as e:
                 return action_result.set_status(
                         phantom.APP_ERROR, ALIBABARAM_ERROR_ADD_REMOVE_GROUP.format(
-                            pr=ALIBABARAM_JSON_ADDING, user='{0} {1}'.format(user_name, ALIBABARAM_JSON_TO), group=group.get(ALIBABARAM_GROUP_NAME), error=str(e)))
+                            pr=ALIBABARAM_JSON_ADDING, user='{0} {1}'.format(user_name,
+                                ALIBABARAM_JSON_TO), group=group.get(ALIBABARAM_GROUP_NAME), error=str(e)))
 
             try:
                 response = self._client.do_action_with_exception(ram_request)
@@ -630,7 +658,8 @@ class AlibabaRamConnector(BaseConnector):
                 return action_result.set_status(phantom.APP_ERROR, "Error occurred while adding user: {0} to the group: {1}".format(user_name, group))
 
             if not response:
-                return action_result.set_status(phantom.APP_ERROR, "Unknown error occurred while adding user: {0} to the group: {1}".format(user_name, group))
+                return action_result.set_status(phantom.APP_ERROR,
+                    "Unknown error occurred while adding user: {0} to the group: {1}".format(user_name, group))
 
         return action_result.set_status(phantom.APP_SUCCESS, ALIBABARAM_REPLACE_GROUP_MSG.format(user=user_name))
 
@@ -729,17 +758,19 @@ class AlibabaRamConnector(BaseConnector):
             ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
             response = self._client.do_action_with_exception(ram_request)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, "Error occurred while creating request for fetching details of the user: {0}. Error: {1}".format(user_name, str(e)))
+            return action_result.set_status(phantom.APP_ERROR,
+                "Error occurred while creating request for fetching details of the user: {0}. Error: {1}".format(user_name, str(e)))
 
         try:
             resp_json = json.loads(response)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, 'Error occurred while parsing the response JSON. Error: {0}'.format(str(e)))
+            return action_result.set_status(phantom.APP_ERROR,'Error occurred while parsing the response JSON. Error: {0}'.format(str(e)))
 
         if resp_json and resp_json.get(ALIBABARAM_JSON_USER):
             user_details.update(resp_json.get(ALIBABARAM_JSON_USER))
         else:
-            return action_result.set_status(phantom.APP_ERROR, "Unknown error occurred while fetching the general details of the user: {0}".format(user_name))
+            return action_result.set_status(phantom.APP_ERROR,
+                "Unknown error occurred while fetching the general details of the user: {0}".format(user_name))
 
         # 2. Fetch the groups details for the given user
         # This API call of the SDK does not support the pagination
@@ -816,10 +847,12 @@ class AlibabaRamConnector(BaseConnector):
 
             response = self._client.do_action_with_exception(ram_request)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, "Error occurred while updating provided details for the user: {0}. Error: {1}".format(user_name, str(e)))
+            return action_result.set_status(phantom.APP_ERROR,
+                "Error occurred while updating provided details for the user: {0}. Error: {1}".format(user_name, str(e)))
 
         if not response:
-            return action_result.set_status(phantom.APP_ERROR, "Unknown error occurred while updating provided details for the user: {0}".format(user_name))
+            return action_result.set_status(phantom.APP_ERROR,
+                "Unknown error occurred while updating provided details for the user: {0}".format(user_name))
 
         try:
             resp_json = json.loads(response)
@@ -829,9 +862,11 @@ class AlibabaRamConnector(BaseConnector):
         if resp_json and resp_json.get(ALIBABARAM_JSON_USER):
             action_result.add_data(resp_json.get(ALIBABARAM_JSON_USER))
         else:
-            return action_result.set_status(phantom.APP_ERROR, "User: {0} updated successfully, but the API did not return the updated user details".format(user_name))
+            return action_result.set_status(phantom.APP_ERROR,
+                "User: {0} updated successfully, but the API did not return the updated user details".format(user_name))
 
-        return action_result.set_status(phantom.APP_SUCCESS, "Successfully updated the details for the User: {0}".format(user_name))
+        return action_result.set_status(phantom.APP_SUCCESS,
+            "Successfully updated the details for the User: {0}".format(user_name))
 
     def handle_action(self, param):
 

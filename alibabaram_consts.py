@@ -80,11 +80,13 @@ ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING = {
         "Policies": "Policy"
 }
 ALIBABARAM_INVALID_INTEGER = 'Please provide non-zero positive integer in {parameter}'
-ALIBABARAM_ERROR_CREATING_REQUEST = 'Error occurred while creating request for fetching the {item_name} associated with the given RAM {target_item}. Error: {error}'
+ALIBABARAM_ERROR_CREATING_REQUEST = "Error occurred while creating request for fetching the {item_name} associated with " \
+        "the given RAM {target_item}. Error: {error}"
 ALIBABARAM_ERROR_ATTACH_DETACH_POLICY = 'Error occurred while {pr} policy: {pol} the {itn}: {it}. Error: {err}'
 ALIBABARAM_ERROR_ADD_REMOVE_GROUP = 'Error occurred while {pr} user: {user} the group: {group}. Error: {err}'
 ALIBABARAM_ATTACH_POLICY_MSG = "Policy: {pol} is successfully attached to the user: {user}, group: {grp}, and role: {role}"
 ALIBABARAM_DETACH_POLICY_MSG = "Policy: {pol} is successfully detached from the user: {user}, group: {grp}, and role: {role}"
 ALIBABARAM_REPLACE_POLICY_MSG = "Provided policies are successfully replaced for the user: {user} and group: {grp}"
 ALIBABARAM_REPLACE_GROUP_MSG = "Provided groups are successfully replaced for the user: {user}"
-ALIBABARAM_INVALID_POLICY_TYPES = "Mis-match in type of the policy: {pol}. Original policy type is: {curr_type} and the provided policy type in action parameters is: {prov_type}"
+ALIBABARAM_INVALID_POLICY_TYPES = "Mis-match in type of the policy: {pol}. Original policy type is: {curr_type} and " \
+        "the provided policy type in action parameters is: {prov_type}"
