@@ -655,7 +655,8 @@ class AlibabaRamConnector(BaseConnector):
                 response = self._client.do_action_with_exception(ram_request)
             except Exception as e:
                 self.debug_print("Error occurred while adding user: {0} to the group: {1}. Error: {2}".format(user_name, group, str(e)))
-                return action_result.set_status(phantom.APP_ERROR, "Error occurred while adding user: {0} to the group: {1}".format(user_name, group))
+                return action_result.set_status(phantom.APP_ERROR,
+                    "Error occurred while adding user: {0} to the group: {1}".format(user_name, group))
 
             if not response:
                 return action_result.set_status(phantom.APP_ERROR,
@@ -764,7 +765,7 @@ class AlibabaRamConnector(BaseConnector):
         try:
             resp_json = json.loads(response)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR,'Error occurred while parsing the response JSON. Error: {0}'.format(str(e)))
+            return action_result.set_status(phantom.APP_ERROR, 'Error occurred while parsing the response JSON. Error: {0}'.format(str(e)))
 
         if resp_json and resp_json.get(ALIBABARAM_JSON_USER):
             user_details.update(resp_json.get(ALIBABARAM_JSON_USER))
