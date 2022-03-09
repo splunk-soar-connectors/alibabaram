@@ -15,46 +15,32 @@
 #
 #
 # Phantom App imports
-import json
-
 import phantom.app as phantom
-import requests
-from aliyunsdkcore.client import AcsClient
-from aliyunsdkram.request.v20150501.AddUserToGroupRequest import \
-    AddUserToGroupRequest
-from aliyunsdkram.request.v20150501.AttachPolicyToGroupRequest import \
-    AttachPolicyToGroupRequest
-from aliyunsdkram.request.v20150501.AttachPolicyToRoleRequest import \
-    AttachPolicyToRoleRequest
-from aliyunsdkram.request.v20150501.AttachPolicyToUserRequest import \
-    AttachPolicyToUserRequest
-from aliyunsdkram.request.v20150501.DetachPolicyFromGroupRequest import \
-    DetachPolicyFromGroupRequest
-from aliyunsdkram.request.v20150501.DetachPolicyFromRoleRequest import \
-    DetachPolicyFromRoleRequest
-from aliyunsdkram.request.v20150501.DetachPolicyFromUserRequest import \
-    DetachPolicyFromUserRequest
-from aliyunsdkram.request.v20150501.GetUserRequest import GetUserRequest
-from aliyunsdkram.request.v20150501.ListGroupsForUserRequest import \
-    ListGroupsForUserRequest
-from aliyunsdkram.request.v20150501.ListGroupsRequest import ListGroupsRequest
-from aliyunsdkram.request.v20150501.ListPoliciesForGroupRequest import \
-    ListPoliciesForGroupRequest
-from aliyunsdkram.request.v20150501.ListPoliciesForUserRequest import \
-    ListPoliciesForUserRequest
-from aliyunsdkram.request.v20150501.ListPoliciesRequest import \
-    ListPoliciesRequest
-from aliyunsdkram.request.v20150501.ListRolesRequest import ListRolesRequest
-from aliyunsdkram.request.v20150501.ListUsersForGroupRequest import \
-    ListUsersForGroupRequest
-from aliyunsdkram.request.v20150501.ListUsersRequest import ListUsersRequest
-from aliyunsdkram.request.v20150501.RemoveUserFromGroupRequest import \
-    RemoveUserFromGroupRequest
-from aliyunsdkram.request.v20150501.UpdateUserRequest import UpdateUserRequest
-from phantom.action_result import ActionResult
 from phantom.base_connector import BaseConnector
+from phantom.action_result import ActionResult
 
+import requests
+import json
 from alibabaram_consts import *
+from aliyunsdkcore.client import AcsClient
+from aliyunsdkram.request.v20150501.UpdateUserRequest import UpdateUserRequest
+from aliyunsdkram.request.v20150501.ListUsersRequest import ListUsersRequest
+from aliyunsdkram.request.v20150501.ListRolesRequest import ListRolesRequest
+from aliyunsdkram.request.v20150501.ListGroupsRequest import ListGroupsRequest
+from aliyunsdkram.request.v20150501.ListPoliciesRequest import ListPoliciesRequest
+from aliyunsdkram.request.v20150501.ListUsersForGroupRequest import ListUsersForGroupRequest
+from aliyunsdkram.request.v20150501.ListPoliciesForGroupRequest import ListPoliciesForGroupRequest
+from aliyunsdkram.request.v20150501.AddUserToGroupRequest import AddUserToGroupRequest
+from aliyunsdkram.request.v20150501.RemoveUserFromGroupRequest import RemoveUserFromGroupRequest
+from aliyunsdkram.request.v20150501.AttachPolicyToGroupRequest import AttachPolicyToGroupRequest
+from aliyunsdkram.request.v20150501.AttachPolicyToRoleRequest import AttachPolicyToRoleRequest
+from aliyunsdkram.request.v20150501.AttachPolicyToUserRequest import AttachPolicyToUserRequest
+from aliyunsdkram.request.v20150501.DetachPolicyFromUserRequest import DetachPolicyFromUserRequest
+from aliyunsdkram.request.v20150501.DetachPolicyFromGroupRequest import DetachPolicyFromGroupRequest
+from aliyunsdkram.request.v20150501.DetachPolicyFromRoleRequest import DetachPolicyFromRoleRequest
+from aliyunsdkram.request.v20150501.GetUserRequest import GetUserRequest
+from aliyunsdkram.request.v20150501.ListGroupsForUserRequest import ListGroupsForUserRequest
+from aliyunsdkram.request.v20150501.ListPoliciesForUserRequest import ListPoliciesForUserRequest
 
 
 class RetVal(tuple):
@@ -947,9 +933,8 @@ class AlibabaRamConnector(BaseConnector):
 
 if __name__ == '__main__':
 
-    import argparse
-
     import pudb
+    import argparse
 
     pudb.set_trace()
 
