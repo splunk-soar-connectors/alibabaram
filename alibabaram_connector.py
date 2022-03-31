@@ -152,6 +152,7 @@ class AlibabaRamConnector(BaseConnector):
         summary = action_result.update_summary({})
         summary['total_users'] = action_result.get_data_size()
 
+        self.save_progress("Handle list users succeeded")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_list_roles(self, param):
@@ -182,6 +183,7 @@ class AlibabaRamConnector(BaseConnector):
         summary = action_result.update_summary({})
         summary['total_roles'] = action_result.get_data_size()
 
+        self.save_progress("Handle list roles succeeded")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _list_all_groups(self, limit, action_result):
@@ -216,6 +218,7 @@ class AlibabaRamConnector(BaseConnector):
         summary = action_result.update_summary({})
         summary['total_groups'] = action_result.get_data_size()
 
+        self.save_progress("Handle list groups succeeded")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _list_all_policies(self, limit, action_result):
@@ -250,6 +253,7 @@ class AlibabaRamConnector(BaseConnector):
         summary = action_result.update_summary({})
         summary['total_policies'] = action_result.get_data_size()
 
+        self.save_progress("Handle list policies succeeded")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_add_user(self, param):
@@ -274,6 +278,7 @@ class AlibabaRamConnector(BaseConnector):
             return action_result.set_status(phantom.APP_ERROR,
                 "Unknown error occurred while adding user: {0} to the group: {1}".format(user_name, group_name))
 
+        self.save_progress("Handle add user succeeded")
         return action_result.set_status(phantom.APP_SUCCESS,
             "User: {0} is successfully added to the group: {1}".format(user_name, group_name))
 
@@ -299,6 +304,7 @@ class AlibabaRamConnector(BaseConnector):
             return action_result.set_status(phantom.APP_ERROR,
                 "Unknown error occurred while removing user: {0} from the group: {1}".format(user_name, group_name))
 
+        self.save_progress("Handle remove user succeeded")
         return action_result.set_status(phantom.APP_SUCCESS,
             "User: {0} is successfully removed from the group: {1}".format(user_name, group_name))
 
@@ -381,6 +387,7 @@ class AlibabaRamConnector(BaseConnector):
             if not result:
                 return action_result.get_status()
 
+        self.save_progress("Handle attach policy succeeded")
         return action_result.set_status(phantom.APP_SUCCESS,
             ALIBABARAM_ATTACH_POLICY_MSG.format(pol=policy_name, user=user_name, grp=group_name, role=role_name))
 
@@ -418,6 +425,7 @@ class AlibabaRamConnector(BaseConnector):
             if not result:
                 return action_result.get_status()
 
+        self.save_progress("Handle detach policy succeeded")
         return action_result.set_status(phantom.APP_SUCCESS,
             ALIBABARAM_DETACH_POLICY_MSG.format(pol=policy_name, user=user_name, grp=group_name, role=role_name))
 
@@ -545,6 +553,7 @@ class AlibabaRamConnector(BaseConnector):
                 if not result:
                     return action_result.get_status()
 
+        self.save_progress("Handle replace policies succeeded")
         return action_result.set_status(phantom.APP_SUCCESS, ALIBABARAM_REPLACE_POLICY_MSG.format(user=user_name, grp=group_name))
 
     def _validate_groups(self, groups_list, action_result):
@@ -679,6 +688,7 @@ class AlibabaRamConnector(BaseConnector):
         if result is None:
             return action_result.get_status()
 
+        self.save_progress("Handle strip policies succeeded")
         return action_result.set_status(phantom.APP_SUCCESS, "Successfully removed all the policies from the user: {0}".format(user_name))
 
     def _handle_strip_groups(self, param):
@@ -744,6 +754,7 @@ class AlibabaRamConnector(BaseConnector):
         summary['total_policies'] = len(group_details['policies'])
         summary['total_users'] = len(group_details['users'])
 
+        self.save_progress("Handle describe group succeeded")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_describe_user(self, param):
@@ -815,6 +826,7 @@ class AlibabaRamConnector(BaseConnector):
 
         action_result.add_data(user_details)
 
+        self.save_progress("Handle describe user succeeded")
         return action_result.set_status(phantom.APP_SUCCESS, "Successfully fetched the details of the user: {0}".format(user_name))
 
     def _handle_update_user(self, param):
@@ -868,6 +880,7 @@ class AlibabaRamConnector(BaseConnector):
             return action_result.set_status(phantom.APP_ERROR,
                 "User: {0} updated successfully, but the API did not return the updated user details".format(user_name))
 
+        self.save_progress("Handle update user succeeded")
         return action_result.set_status(phantom.APP_SUCCESS,
             "Successfully updated the details for the User: {0}".format(user_name))
 
