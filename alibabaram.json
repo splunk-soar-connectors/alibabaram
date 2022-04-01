@@ -14,7 +14,7 @@
     "utctime_updated": "2022-01-07T21:04:14.000000Z",
     "package_name": "phantom_alibabaram",
     "main_module": "alibabaram_connector.py",
-    "min_phantom_version": "4.9.39220",
+    "min_phantom_version": "5.1.0",
     "fips_compliant": true,
     "latest_tested_versions": [
         "Alibaba RAM Cloud, 2021 on 18 June, 2021"
