@@ -79,6 +79,7 @@ ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING = {
         "Groups": "Group",
         "Policies": "Policy"
 }
+DEFAULT_REQUEST_TIMEOUT = 30  # in seconds
 ALIBABARAM_INVALID_INTEGER = 'Please provide non-zero positive integer in {parameter}'
 ALIBABARAM_ERROR_CREATING_REQUEST = "Error occurred while creating request for fetching the {item_name} associated with " \
         "the given RAM {target_item}. Error: {error}"

@@ -9,7 +9,7 @@
     "product_name": "Alibaba Resource Access Management",
     "product_version_regex": ".*",
     "publisher": "Splunk",
-    "license": "Copyright (c) 2019-2022 Splunk Inc.",
+git     "license": "Copyright (c) 2019-2022 Splunk Inc.",
     "app_version": "2.0.4",
     "utctime_updated": "2022-01-07T21:04:14.000000Z",
     "package_name": "phantom_alibabaram",
