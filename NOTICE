@@ -1,17 +1,17 @@
 Splunk SOAR Alibaba RAM
-Copyright (c) 2019-2021 Splunk Inc.
+Copyright (c) 2019-2022 Splunk Inc.
 
 Third-party Software Attributions:
 
 Library: aliyun-python-sdk-core
 Version: 2.13.5
-License: Apache 2.0
-Unknown copyright
+License: Apache Software License (Apache License 2.0)
+Copyright 1999-present Alibaba Group Holding Ltd
 
 Library: aliyun-python-sdk-ram
 Version: 3.1.0
-License: Apache 2.0
-Unknown copyright
+License: Apache Software License (Apache License 2.0)
+Copyright 1999-present Alibaba Group Holding Ltd
 
 Library: jmespath
 Version: 0.9.3
