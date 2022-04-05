@@ -1,10 +1,20 @@
 # File: alibabaram_consts.py
-# Copyright (c) 2019-2021 Splunk Inc.
 #
-# SPLUNK CONFIDENTIAL - Use or disclosure of this material in whole or in part
-# without a valid written license from Splunk Inc. is PROHIBITED.
+# Copyright (c) 2019-2022 Splunk Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions
+# and limitations under the License.
+#
+#
 # Define your constants here
-
 ALIBABARAM_MAX_ITEMS = 1000
 ALIBABARAM_JSON_KEY = "json"
 ALIBABARAM_JSON_FROM = "from"
@@ -69,12 +79,15 @@ ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING = {
         "Groups": "Group",
         "Policies": "Policy"
 }
+DEFAULT_REQUEST_TIMEOUT = 30  # in seconds
 ALIBABARAM_INVALID_INTEGER = 'Please provide non-zero positive integer in {parameter}'
-ALIBABARAM_ERROR_CREATING_REQUEST = 'Error occurred while creating request for fetching the {item_name} associated with the given RAM {target_item}. Error: {error}'
+ALIBABARAM_ERROR_CREATING_REQUEST = "Error occurred while creating request for fetching the {item_name} associated with " \
+        "the given RAM {target_item}. Error: {error}"
 ALIBABARAM_ERROR_ATTACH_DETACH_POLICY = 'Error occurred while {pr} policy: {pol} the {itn}: {it}. Error: {err}'
 ALIBABARAM_ERROR_ADD_REMOVE_GROUP = 'Error occurred while {pr} user: {user} the group: {group}. Error: {err}'
 ALIBABARAM_ATTACH_POLICY_MSG = "Policy: {pol} is successfully attached to the user: {user}, group: {grp}, and role: {role}"
 ALIBABARAM_DETACH_POLICY_MSG = "Policy: {pol} is successfully detached from the user: {user}, group: {grp}, and role: {role}"
 ALIBABARAM_REPLACE_POLICY_MSG = "Provided policies are successfully replaced for the user: {user} and group: {grp}"
 ALIBABARAM_REPLACE_GROUP_MSG = "Provided groups are successfully replaced for the user: {user}"
-ALIBABARAM_INVALID_POLICY_TYPES = "Mis-match in type of the policy: {pol}. Original policy type is: {curr_type} and the provided policy type in action parameters is: {prov_type}"
+ALIBABARAM_INVALID_POLICY_TYPES = "Mis-match in type of the policy: {pol}. Original policy type is: {curr_type} and " \
+        "the provided policy type in action parameters is: {prov_type}"
