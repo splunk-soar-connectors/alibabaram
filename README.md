@@ -2,7 +2,7 @@
 # Alibaba RAM
 
 Publisher: Splunk  
-Connector Version: 2.0.7  
+Connector Version: 2.0.8  
 Product Vendor: Alibaba  
 Product Name: Alibaba Resource Access Management  
 Product Version Supported (regex): ".\*"  
