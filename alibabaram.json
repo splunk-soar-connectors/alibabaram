@@ -9,8 +9,8 @@
     "product_name": "Alibaba Resource Access Management",
     "product_version_regex": ".*",
     "publisher": "Splunk",
-    "license": "Copyright (c) 2019-2022 Splunk Inc.",
-    "app_version": "2.0.5",
+    "license": "Copyright (c) 2019-2023 Splunk Inc.",
+    "app_version": "2.0.6",
     "utctime_updated": "2022-04-04T19:44:56.000000Z",
     "package_name": "phantom_alibabaram",
     "main_module": "alibabaram_connector.py",
@@ -25,35 +25,15 @@
         "wheel": [
             {
                 "module": "aliyun_python_sdk_core",
-                "input_file": "wheels/aliyun_python_sdk_core-2.13.5-py3-none-any.whl"
+                "input_file": "wheels/py3/aliyun_python_sdk_core-2.13.5-py3-none-any.whl"
             },
             {
                 "module": "aliyun_python_sdk_ram",
-                "input_file": "wheels/aliyun_python_sdk_ram-3.1.0-py3-none-any.whl"
-            },
-            {
-                "module": "certifi",
-                "input_file": "wheels/certifi-2021.10.8-py2.py3-none-any.whl"
-            },
-            {
-                "module": "chardet",
-                "input_file": "wheels/chardet-3.0.4-py2.py3-none-any.whl"
-            },
-            {
-                "module": "idna",
-                "input_file": "wheels/idna-2.10-py2.py3-none-any.whl"
+                "input_file": "wheels/py3/aliyun_python_sdk_ram-3.1.0-py3-none-any.whl"
             },
             {
                 "module": "jmespath",
-                "input_file": "wheels/jmespath-0.9.3-py2.py3-none-any.whl"
-            },
-            {
-                "module": "requests",
-                "input_file": "wheels/requests-2.25.0-py2.py3-none-any.whl"
-            },
-            {
-                "module": "urllib3",
-                "input_file": "wheels/urllib3-1.26.7-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/jmespath-0.9.3-py2.py3-none-any.whl"
             }
         ]
     },
