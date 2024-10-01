@@ -1,3 +1,3 @@
 **Unreleased**
 
-* update dependencies in requirements [PAPP-34743]
+* updated dependencies in requirements [PAPP-34743]
