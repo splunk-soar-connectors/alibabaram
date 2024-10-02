@@ -1,6 +1,6 @@
 # File: alibabaram_view.py
 #
-# Copyright (c) 2019-2023 Splunk Inc.
+# Copyright (c) 2019-2024 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,23 +20,23 @@ def _get_ctx_result(result, provides):
     summary = result.get_summary()
     data = result.get_data()
 
-    ctx_result['param'] = param
+    ctx_result["param"] = param
     ctx_result["action_name"] = provides
     if summary:
-        ctx_result['summary'] = summary
+        ctx_result["summary"] = summary
 
     if not data:
-        ctx_result['data'] = {}
+        ctx_result["data"] = {}
         return ctx_result
 
-    ctx_result['data'] = data
+    ctx_result["data"] = data
 
     return ctx_result
 
 
 def display_view(provides, all_app_runs, context):
 
-    context['results'] = results = []
+    context["results"] = results = []
     for summary, action_results in all_app_runs:
         for result in action_results:
             ctx_result = _get_ctx_result(result, provides)
@@ -45,9 +45,9 @@ def display_view(provides, all_app_runs, context):
             results.append(ctx_result)
 
     if provides == "describe group":
-        ret_val = 'alibabaram_describe_group.html'
+        ret_val = "alibabaram_describe_group.html"
 
     if provides == "describe user":
-        ret_val = 'alibabaram_describe_user.html'
+        ret_val = "alibabaram_describe_user.html"
 
     return ret_val

@@ -9,34 +9,18 @@
     "product_name": "Alibaba Resource Access Management",
     "product_version_regex": ".*",
     "publisher": "Splunk",
-    "license": "Copyright (c) 2019-2023 Splunk Inc.",
-    "app_version": "2.0.6",
-    "utctime_updated": "2022-04-04T19:44:56.000000Z",
+    "license": "Copyright (c) 2019-2024 Splunk Inc.",
+    "app_version": "2.0.7",
+    "utctime_updated": "2024-10-01T11:00:18.000000Z",
     "package_name": "phantom_alibabaram",
     "main_module": "alibabaram_connector.py",
-    "min_phantom_version": "5.1.0",
+    "min_phantom_version": "6.2.1",
     "fips_compliant": true,
     "latest_tested_versions": [
         "Alibaba RAM Cloud, 2021 on 18 June, 2021"
     ],
     "python_version": "3",
     "app_wizard_version": "1.0.0",
-    "pip_dependencies": {
-        "wheel": [
-            {
-                "module": "aliyun_python_sdk_core",
-                "input_file": "wheels/py3/aliyun_python_sdk_core-2.13.5-py3-none-any.whl"
-            },
-            {
-                "module": "aliyun_python_sdk_ram",
-                "input_file": "wheels/py3/aliyun_python_sdk_ram-3.1.0-py3-none-any.whl"
-            },
-            {
-                "module": "jmespath",
-                "input_file": "wheels/shared/jmespath-0.9.3-py2.py3-none-any.whl"
-            }
-        ]
-    },
     "configuration": {
         "access_key": {
             "description": "Access Key ID",
@@ -2081,5 +2065,21 @@
             },
             "versions": "EQ(*)"
         }
-    ]
+    ],
+    "pip_dependencies": {
+        "wheel": [
+            {
+                "module": "aliyun_python_sdk_core",
+                "input_file": "wheels/py3/aliyun_python_sdk_core-2.13.5-py3-none-any.whl"
+            },
+            {
+                "module": "aliyun_python_sdk_ram",
+                "input_file": "wheels/py3/aliyun_python_sdk_ram-3.1.0-py3-none-any.whl"
+            },
+            {
+                "module": "jmespath",
+                "input_file": "wheels/shared/jmespath-0.9.3-py2.py3-none-any.whl"
+            }
+        ]
+    }
 }

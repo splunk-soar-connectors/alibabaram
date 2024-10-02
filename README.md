@@ -2,11 +2,11 @@
 # Alibaba RAM
 
 Publisher: Splunk  
-Connector Version: 2.0.6  
+Connector Version: 2.0.7  
 Product Vendor: Alibaba  
 Product Name: Alibaba Resource Access Management  
 Product Version Supported (regex): ".\*"  
-Minimum Product Version: 5.1.0  
+Minimum Product Version: 6.2.1  
 
 This app integrates with Alibaba Resource Access Management (Alibaba RAM) to support various containment, corrective, and investigate actions
 
