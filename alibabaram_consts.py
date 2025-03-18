@@ -1,6 +1,6 @@
 # File: alibabaram_consts.py
 #
-# Copyright (c) 2019-2024 Splunk Inc.
+# Copyright (c) 2019-2025 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING = {"Users": "User", "Roles": "Role", "G
 DEFAULT_REQUEST_TIMEOUT = 30  # in seconds
 ALIBABARAM_INVALID_INTEGER = "Please provide non-zero positive integer in {parameter}"
 ALIBABARAM_ERROR_CREATING_REQUEST = (
-    "Error occurred while creating request for fetching the {item_name} associated with " "the given RAM {target_item}. Error: {error}"
+    "Error occurred while creating request for fetching the {item_name} associated with the given RAM {target_item}. Error: {error}"
 )
 ALIBABARAM_ERROR_ATTACH_DETACH_POLICY = "Error occurred while {pr} policy: {pol} the {itn}: {it}. Error: {err}"
 ALIBABARAM_ERROR_ADD_REMOVE_GROUP = "Error occurred while {pr} user: {user} the group: {group}. Error: {err}"
