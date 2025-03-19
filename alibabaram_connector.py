@@ -1,6 +1,6 @@
 # File: alibabaram_connector.py
 #
-# Copyright (c) 2019-2024 Splunk Inc.
+# Copyright (c) 2019-2025 Splunk Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -51,11 +51,9 @@ class RetVal(tuple):
 
 
 class AlibabaRamConnector(BaseConnector):
-
     def __init__(self):
-
         # Call the BaseConnectors init first
-        super(AlibabaRamConnector, self).__init__()
+        super().__init__()
 
         self._state = None
         self._access_key = None
@@ -64,7 +62,6 @@ class AlibabaRamConnector(BaseConnector):
         self._client = None
 
     def _paginator(self, item_name, ram_request, limit, action_result, set_max_items=True):
-
         list_items = list()
         next_token = None
 
@@ -79,15 +76,13 @@ class AlibabaRamConnector(BaseConnector):
 
                 response = self._client.do_action_with_exception(ram_request)
             except Exception as e:
-                action_result.set_status(
-                    phantom.APP_ERROR, "Error occurred while fetching the list of all the RAM {0}. Error: {1}".format(item_name, str(e))
-                )
+                action_result.set_status(phantom.APP_ERROR, f"Error occurred while fetching the list of all the RAM {item_name}. Error: {e!s}")
                 return None
 
             try:
                 resp_json = json.loads(response)
             except Exception as e:
-                action_result.set_status(phantom.APP_ERROR, "Error occurred while parsing the response JSON. Error: {0}".format(str(e)))
+                action_result.set_status(phantom.APP_ERROR, f"Error occurred while parsing the response JSON. Error: {e!s}")
                 return None
 
             if resp_json and resp_json.get(item_name) and resp_json.get(item_name).get(ALIBABARAM_JSON_ACTIONS_RESPONSE_MAPPING.get(item_name)):
@@ -104,7 +99,6 @@ class AlibabaRamConnector(BaseConnector):
         return list_items
 
     def _handle_test_connectivity(self, param):
-
         action_result = self.add_action_result(ActionResult(dict(param)))
 
         if not self._client:
@@ -120,16 +114,13 @@ class AlibabaRamConnector(BaseConnector):
             self._client.do_action_with_exception(ram_request)
         except Exception as e:
             self.save_progress("Test Connectivity Failed")
-            return action_result.set_status(
-                phantom.APP_ERROR, "Error occurred while fetching the list of all the users. Error: {0}".format(str(e))
-            )
+            return action_result.set_status(phantom.APP_ERROR, f"Error occurred while fetching the list of all the users. Error: {e!s}")
 
         self.save_progress("Test Connectivity Passed")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_list_users(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         limit = param.get(ALIBABARAM_JSON_LIMIT)
@@ -142,7 +133,7 @@ class AlibabaRamConnector(BaseConnector):
             ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
         except Exception as e:
             return action_result.set_status(
-                phantom.APP_ERROR, "Error occurred while creating request for fetching list of all the RAM users. Error: {0}".format(str(e))
+                phantom.APP_ERROR, f"Error occurred while creating request for fetching list of all the RAM users. Error: {e!s}"
             )
 
         users = self._paginator(ALIBABARAM_JSON_USERS, ram_request, limit, action_result)
@@ -160,8 +151,7 @@ class AlibabaRamConnector(BaseConnector):
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_list_roles(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         limit = param.get(ALIBABARAM_JSON_LIMIT)
@@ -174,7 +164,7 @@ class AlibabaRamConnector(BaseConnector):
             ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
         except Exception as e:
             return action_result.set_status(
-                phantom.APP_ERROR, "Error occurred while creating request for fetching list of all the RAM roles. Error: {0}".format(str(e))
+                phantom.APP_ERROR, f"Error occurred while creating request for fetching list of all the RAM roles. Error: {e!s}"
             )
 
         roles = self._paginator(ALIBABARAM_JSON_ROLES, ram_request, limit, action_result)
@@ -197,15 +187,14 @@ class AlibabaRamConnector(BaseConnector):
             ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
         except Exception as e:
             action_result.set_status(
-                phantom.APP_ERROR, "Error occurred while creating request for fetching list of all the RAM groups. Error: {0}".format(str(e))
+                phantom.APP_ERROR, f"Error occurred while creating request for fetching list of all the RAM groups. Error: {e!s}"
             )
             return None
 
         return self._paginator(ALIBABARAM_JSON_GROUPS, ram_request, limit, action_result)
 
     def _handle_list_groups(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         limit = param.get(ALIBABARAM_JSON_LIMIT)
@@ -233,15 +222,14 @@ class AlibabaRamConnector(BaseConnector):
             ram_request.set_accept_format(ALIBABARAM_JSON_KEY)
         except Exception as e:
             action_result.set_status(
-                phantom.APP_ERROR, "Error occurred while creating request for fetching list of all the RAM policies. Error: {0}".format(str(e))
+                phantom.APP_ERROR, f"Error occurred while creating request for fetching list of all the RAM policies. Error: {e!s}"
             )
             return None
 
         return self._paginator(ALIBABARAM_JSON_POLICIES, ram_request, limit, action_result)
 
     def _handle_list_policies(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         limit = param.get(ALIBABARAM_JSON_LIMIT)
@@ -264,8 +252,7 @@ class AlibabaRamConnector(BaseConnector):
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_add_user(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         user_name = param.get(ALIBABARAM_JSON_USER_NAME)
@@ -279,20 +266,19 @@ class AlibabaRamConnector(BaseConnector):
             response = self._client.do_action_with_exception(ram_request)
         except Exception as e:
             return action_result.set_status(
-                phantom.APP_ERROR, "Error occurred while adding user: {0} to the group: {1}. Error: {2}".format(user_name, group_name, str(e))
+                phantom.APP_ERROR, f"Error occurred while adding user: {user_name} to the group: {group_name}. Error: {e!s}"
             )
 
         if not response:
             return action_result.set_status(
-                phantom.APP_ERROR, "Unknown error occurred while adding user: {0} to the group: {1}".format(user_name, group_name)
+                phantom.APP_ERROR, f"Unknown error occurred while adding user: {user_name} to the group: {group_name}"
             )
 
         self.save_progress("Handle add user succeeded")
-        return action_result.set_status(phantom.APP_SUCCESS, "User: {0} is successfully added to the group: {1}".format(user_name, group_name))
+        return action_result.set_status(phantom.APP_SUCCESS, f"User: {user_name} is successfully added to the group: {group_name}")
 
     def _handle_remove_user(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         user_name = param.get(ALIBABARAM_JSON_USER_NAME)
@@ -307,18 +293,16 @@ class AlibabaRamConnector(BaseConnector):
         except Exception as e:
             return action_result.set_status(
                 phantom.APP_ERROR,
-                "Error occurred while removing user: {0} from the group: {1}. Error: {2}".format(user_name, group_name, str(e)),
+                f"Error occurred while removing user: {user_name} from the group: {group_name}. Error: {e!s}",
             )
 
         if not response:
             return action_result.set_status(
-                phantom.APP_ERROR, "Unknown error occurred while removing user: {0} from the group: {1}".format(user_name, group_name)
+                phantom.APP_ERROR, f"Unknown error occurred while removing user: {user_name} from the group: {group_name}"
             )
 
         self.save_progress("Handle remove user succeeded")
-        return action_result.set_status(
-            phantom.APP_SUCCESS, "User: {0} is successfully removed from the group: {1}".format(user_name, group_name)
-        )
+        return action_result.set_status(phantom.APP_SUCCESS, f"User: {user_name} is successfully removed from the group: {group_name}")
 
     def _attach_detach_policy(self, policy_name, policy_type, item, item_name, action_result, is_attach=True):
         try:
@@ -361,7 +345,7 @@ class AlibabaRamConnector(BaseConnector):
             action_result.set_status(
                 phantom.APP_ERROR,
                 ALIBABARAM_ERROR_ATTACH_DETACH_POLICY.format(
-                    pr=process_name, pol="{0} {1}".format(policy_name, process_op), itn=item_name, it=item, err=str(e)
+                    pr=process_name, pol=f"{policy_name} {process_op}", itn=item_name, it=item, err=str(e)
                 ),
             )
             return None
@@ -369,8 +353,7 @@ class AlibabaRamConnector(BaseConnector):
         return response
 
     def _handle_attach_policy(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
 
@@ -409,8 +392,7 @@ class AlibabaRamConnector(BaseConnector):
         )
 
     def _handle_detach_policy(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
 
@@ -517,8 +499,7 @@ class AlibabaRamConnector(BaseConnector):
         return True
 
     def _handle_replace_policies(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
 
@@ -649,7 +630,7 @@ class AlibabaRamConnector(BaseConnector):
                     phantom.APP_ERROR,
                     ALIBABARAM_ERROR_ADD_REMOVE_GROUP.format(
                         pr=ALIBABARAM_JSON_REMOVING,
-                        user="{0} {1}".format(user_name, ALIBABARAM_JSON_FROM),
+                        user=f"{user_name} {ALIBABARAM_JSON_FROM}",
                         group=group.get(ALIBABARAM_GROUP_NAME),
                         error=str(e),
                     ),
@@ -660,27 +641,25 @@ class AlibabaRamConnector(BaseConnector):
                 response = self._client.do_action_with_exception(ram_request)
             except Exception as e:
                 self.debug_print(
-                    "Error occurred while removing user: {0} from the group: {1}. Error: {2}".format(
-                        user_name, group.get(ALIBABARAM_GROUP_NAME), str(e)
-                    )
+                    f"Error occurred while removing user: {user_name} from the group: {group.get(ALIBABARAM_GROUP_NAME)}. Error: {e!s}"
                 )
                 action_result.set_status(
                     phantom.APP_ERROR,
-                    "Error occurred while removing user: {0} from the group: {1}".format(user_name, group.get(ALIBABARAM_GROUP_NAME)),
+                    f"Error occurred while removing user: {user_name} from the group: {group.get(ALIBABARAM_GROUP_NAME)}",
                 )
                 return None
 
             if not response:
                 action_result.set_status(
                     phantom.APP_ERROR,
-                    "Unknown error occurred while removing user: {0} from the group: {1}".format(user_name, group.get(ALIBABARAM_GROUP_NAME)),
+                    f"Unknown error occurred while removing user: {user_name} from the group: {group.get(ALIBABARAM_GROUP_NAME)}",
                 )
                 return None
 
         return True
 
     def _handle_replace_groups(self, param):
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
 
@@ -713,7 +692,7 @@ class AlibabaRamConnector(BaseConnector):
                     phantom.APP_ERROR,
                     ALIBABARAM_ERROR_ADD_REMOVE_GROUP.format(
                         pr=ALIBABARAM_JSON_ADDING,
-                        user="{0} {1}".format(user_name, ALIBABARAM_JSON_TO),
+                        user=f"{user_name} {ALIBABARAM_JSON_TO}",
                         group=group.get(ALIBABARAM_GROUP_NAME),
                         error=str(e),
                     ),
@@ -722,21 +701,18 @@ class AlibabaRamConnector(BaseConnector):
             try:
                 response = self._client.do_action_with_exception(ram_request)
             except Exception as e:
-                self.debug_print("Error occurred while adding user: {0} to the group: {1}. Error: {2}".format(user_name, group, str(e)))
-                return action_result.set_status(
-                    phantom.APP_ERROR, "Error occurred while adding user: {0} to the group: {1}".format(user_name, group)
-                )
+                self.debug_print(f"Error occurred while adding user: {user_name} to the group: {group}. Error: {e!s}")
+                return action_result.set_status(phantom.APP_ERROR, f"Error occurred while adding user: {user_name} to the group: {group}")
 
             if not response:
                 return action_result.set_status(
-                    phantom.APP_ERROR, "Unknown error occurred while adding user: {0} to the group: {1}".format(user_name, group)
+                    phantom.APP_ERROR, f"Unknown error occurred while adding user: {user_name} to the group: {group}"
                 )
 
         return action_result.set_status(phantom.APP_SUCCESS, ALIBABARAM_REPLACE_GROUP_MSG.format(user=user_name))
 
     def _handle_strip_policies(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
 
@@ -748,11 +724,10 @@ class AlibabaRamConnector(BaseConnector):
             return action_result.get_status()
 
         self.save_progress("Handle strip policies succeeded")
-        return action_result.set_status(phantom.APP_SUCCESS, "Successfully removed all the policies from the user: {0}".format(user_name))
+        return action_result.set_status(phantom.APP_SUCCESS, f"Successfully removed all the policies from the user: {user_name}")
 
     def _handle_strip_groups(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
 
@@ -763,11 +738,10 @@ class AlibabaRamConnector(BaseConnector):
         if result is None:
             return action_result.get_status()
 
-        return action_result.set_status(phantom.APP_SUCCESS, "Successfully removed user: {0} from all the groups".format(user_name))
+        return action_result.set_status(phantom.APP_SUCCESS, f"Successfully removed user: {user_name} from all the groups")
 
     def _handle_describe_group(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         group_name = param[ALIBABARAM_JSON_GROUP_NAME]
@@ -823,8 +797,7 @@ class AlibabaRamConnector(BaseConnector):
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_describe_user(self, param):
-
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         user_name = param[ALIBABARAM_JSON_USER_NAME]
@@ -839,19 +812,19 @@ class AlibabaRamConnector(BaseConnector):
         except Exception as e:
             return action_result.set_status(
                 phantom.APP_ERROR,
-                "Error occurred while creating request for fetching details of the user: {0}. Error: {1}".format(user_name, str(e)),
+                f"Error occurred while creating request for fetching details of the user: {user_name}. Error: {e!s}",
             )
 
         try:
             resp_json = json.loads(response)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, "Error occurred while parsing the response JSON. Error: {0}".format(str(e)))
+            return action_result.set_status(phantom.APP_ERROR, f"Error occurred while parsing the response JSON. Error: {e!s}")
 
         if resp_json and resp_json.get(ALIBABARAM_JSON_USER):
             user_details.update(resp_json.get(ALIBABARAM_JSON_USER))
         else:
             return action_result.set_status(
-                phantom.APP_ERROR, "Unknown error occurred while fetching the general details of the user: {0}".format(user_name)
+                phantom.APP_ERROR, f"Unknown error occurred while fetching the general details of the user: {user_name}"
             )
 
         # 2. Fetch the groups details for the given user
@@ -901,10 +874,10 @@ class AlibabaRamConnector(BaseConnector):
         action_result.add_data(user_details)
 
         self.save_progress("Handle describe user succeeded")
-        return action_result.set_status(phantom.APP_SUCCESS, "Successfully fetched the details of the user: {0}".format(user_name))
+        return action_result.set_status(phantom.APP_SUCCESS, f"Successfully fetched the details of the user: {user_name}")
 
     def _handle_update_user(self, param):
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
+        self.save_progress(f"In action handler for: {self.get_action_identifier()}")
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         user_name = param.get(ALIBABARAM_JSON_USER_NAME)
@@ -937,31 +910,30 @@ class AlibabaRamConnector(BaseConnector):
             response = self._client.do_action_with_exception(ram_request)
         except Exception as e:
             return action_result.set_status(
-                phantom.APP_ERROR, "Error occurred while updating provided details for the user: {0}. Error: {1}".format(user_name, str(e))
+                phantom.APP_ERROR, f"Error occurred while updating provided details for the user: {user_name}. Error: {e!s}"
             )
 
         if not response:
             return action_result.set_status(
-                phantom.APP_ERROR, "Unknown error occurred while updating provided details for the user: {0}".format(user_name)
+                phantom.APP_ERROR, f"Unknown error occurred while updating provided details for the user: {user_name}"
             )
 
         try:
             resp_json = json.loads(response)
         except Exception as e:
-            return action_result.set_status(phantom.APP_ERROR, "Error occurred while parsing the response JSON. Error: {0}".format(str(e)))
+            return action_result.set_status(phantom.APP_ERROR, f"Error occurred while parsing the response JSON. Error: {e!s}")
 
         if resp_json and resp_json.get(ALIBABARAM_JSON_USER):
             action_result.add_data(resp_json.get(ALIBABARAM_JSON_USER))
         else:
             return action_result.set_status(
-                phantom.APP_ERROR, "User: {0} updated successfully, but the API did not return the updated user details".format(user_name)
+                phantom.APP_ERROR, f"User: {user_name} updated successfully, but the API did not return the updated user details"
             )
 
         self.save_progress("Handle update user succeeded")
-        return action_result.set_status(phantom.APP_SUCCESS, "Successfully updated the details for the User: {0}".format(user_name))
+        return action_result.set_status(phantom.APP_SUCCESS, f"Successfully updated the details for the User: {user_name}")
 
     def handle_action(self, param):
-
         action_execution_status = phantom.APP_SUCCESS
 
         # Get the action that we are supposed to execute for this App Run
@@ -995,7 +967,6 @@ class AlibabaRamConnector(BaseConnector):
         return action_execution_status
 
     def initialize(self):
-
         # Load the state in initialize, use it to store data
         # that needs to be accessed across actions
         self._state = self.load_state()
@@ -1010,20 +981,18 @@ class AlibabaRamConnector(BaseConnector):
         try:
             self._client = AcsClient(self._access_key, self._secret_key, self._region_id)
         except Exception as e:
-            self.save_progress("Error occurred while creating client. Error: {0}".format(str(e)))
+            self.save_progress(f"Error occurred while creating client. Error: {e!s}")
             return phantom.APP_ERROR
 
         return phantom.APP_SUCCESS
 
     def finalize(self):
-
         # Save the state, this data is saved across actions and app upgrades
         self.save_state(self._state)
         return phantom.APP_SUCCESS
 
 
 if __name__ == "__main__":
-
     import argparse
 
     import pudb
@@ -1045,7 +1014,6 @@ if __name__ == "__main__":
     verify = args.verify
 
     if username is not None and password is None:
-
         # User specified a username but not a password, so ask
         import getpass
 
