@@ -2066,7 +2066,7 @@
             "versions": "EQ(*)"
         }
     ],
-    "pip_dependencies": {
+    "pip39_dependencies": {
         "wheel": [
             {
                 "module": "aliyun_python_sdk_core",
