@@ -1,24 +1,30 @@
-Splunk SOAR Alibaba RAM
-Copyright (c) 2019-2024 Splunk Inc.
+Splunk SOAR App: Alibaba RAM
+Copyright (c) 2019-2025 Splunk Inc.
+Third Party Software Attributions:
 
-Third-party Software Attributions:
+@@@@============================================================================
 
-Library: aliyun-python-sdk-core
-Version: 2.13.5
-License: Apache Software License (Apache License 2.0)
-Copyright 1999-present Alibaba Group Holding Ltd
+Library: aliyun-python-sdk-core - 2.13.5
+Homepage: https://github.com/aliyun/aliyun-openapi-python-sdk
+License: Apache Software License
+License Text:
 
-Library: aliyun-python-sdk-ram
-Version: 3.1.0
-License: Apache Software License (Apache License 2.0)
-Copyright 1999-present Alibaba Group Holding Ltd
+Please navigate to https://github.com/aliyun/aliyun-openapi-python-sdk to obtain a copy of the license.
 
-Library: jmespath
-Version: 0.9.3
-License: MIT
-Amazon.com
+@@@@============================================================================
 
-Library: requests
-Version: 2.25.0
-License: Apache 2.0
-Kenneth Reitz
+Library: aliyun-python-sdk-ram - 3.1.0
+Homepage: http://develop.aliyun.com/sdk/python
+License: Apache Software License
+License Text:
+
+Please navigate to http://develop.aliyun.com/sdk/python to obtain a copy of the license.
+
+@@@@============================================================================
+
+Library: jmespath - 0.9.3
+Homepage: https://github.com/jmespath/jmespath.py
+License: MIT License
+License Text:
+
+Please navigate to https://github.com/jmespath/jmespath.py to obtain a copy of the license.
