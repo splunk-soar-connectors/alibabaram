@@ -1,7 +1,7 @@
 # Alibaba RAM
 
 Publisher: Splunk \
-Connector Version: 2.0.7 \
+Connector Version: 2.0.8 \
 Product Vendor: Alibaba \
 Product Name: Alibaba Resource Access Management \
 Minimum Product Version: 6.2.1
